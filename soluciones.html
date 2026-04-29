@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Soluciones | Lucas Rojas</title>
+    <link rel="icon" href="imagenes/logo.png" type="image/png" />
+    <link rel="stylesheet" href="estilos.css" />
+    <link rel="stylesheet" href="animaciones.css" />
+<script>!function(){var g=localStorage.getItem("lr-tema");var esClaro=g==="light"?true:g==="dark"?false:(window.matchMedia&&window.matchMedia("(prefers-color-scheme: light)").matches);if(esClaro)document.documentElement.setAttribute("data-theme","light");}();</script>
+</head>
+<body>
+    <!-- LOADER INICIAL -->
+    <div id="page-loader">
+        <img src="imagenes/logo.png" alt="Lucas Rojas" class="loader-logo" />
+        <div class="loader-bar-track"><div class="loader-bar-fill"></div></div>
+    </div>
+    <script>if(sessionStorage.getItem('internal_nav')==='true')document.getElementById('page-loader').style.display='none';</script>
+    <!-- OVERLAY TRANSICIÓN DE PÁGINA (SVG Morphing Waves) -->
+    <div id="page-transition">
+        <svg class="pt-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <defs>
+                <linearGradient id="ptGrad1" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%"   stop-color="var(--pt-color-1, #06090d)" />
+                    <stop offset="20%"  stop-color="var(--pt-color-2, #06090d)" />
+                    <stop offset="45%"  stop-color="var(--pt-color-3, #003d44)" />
+                    <stop offset="70%"  stop-color="var(--pt-color-4, #008fa0)" />
+                    <stop offset="100%" stop-color="var(--pt-color-5, #00c8d7)" />
+                </linearGradient>
+            </defs>
+            <path id="pt-path-1" fill="url(#ptGrad1)" d="M 0 0 V 100 H 100 V 0 H 0" />
+        </svg>
+    </div>
+    <!-- CURSOR PERSONALIZADO -->
+    <div id="cursor-dot"></div>
+    <div id="cursor-ring"></div>
+    <!-- BARRA DE PROGRESO SCROLL -->
+    <div id="scroll-progress"></div>
+    <!-- CANVAS PARTÍCULAS -->
+    <canvas id="particles-canvas"></canvas>
+    <!-- AURORA BACKGROUND -->
+    <div class="aurora-bg">
+        <div class="aurora-blob"></div>
+        <div class="aurora-blob"></div>
+        <div class="aurora-blob"></div>
+    </div>
+    <!-- GRID DE FONDO -->
+    <div class="bg-grid"></div>
+    <header>
+        <ul class="navegacion">
+            <li><a href="index.html" class="logo-link"><img src="imagenes/logo.png" alt="Lucas Rojas" class="logo" /></a></li>
+            <div class="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="soluciones.html" class="activa">Soluciones</a></li>
+                <li><a href="sectores.html">Sectores</a></li>
+                <li><a href="proyectos.html">Proyectos</a></li>
+                <li><a href="nosotros.html">Nosotros</a></li>
+                <li><a href="contacto.html">Contacto</a></li>
+                <li><a href="https://tienda.lucasrojas.com/" target="_blank">Tienda</a></li>
+            </div>
+            <li><button id="btn-tema" class="btn-tema" aria-label="Cambiar tema"><svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button></li>
+            <li><a href="https://tienda.lucasrojas.com/" class="btn-cliente" target="_blank">Área de Cliente</a></li>
+        </ul>
+    </header>
+
+    <h1 class="titulo">SOLUCIONES <span>INTEGRALES</span></h1>
+
+    <div class="contenedor-texto">
+        <p style="text-align: center; color: var(--text-2); font-size: 1.05rem; margin-bottom: 0;">
+            En Lucas Rojas no solo vendemos material. Ofrecemos un servicio de 360 grados para que su empresa, centro educativo o administración pública disponga de todo lo necesario para operar con máxima eficiencia.
+        </p>
+    </div>
+
+    <section class="contenedor-moderno" style="grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));">
+        <div class="bloque">
+            <h3>Oficina y Papelería</h3>
+            <p>Suministro continuo de papel —incluyendo nuestra marca propia Lucas Rojas—, archivo, escritura, manipulación y elementos básicos para el trabajo diario corporativo.</p>
+        </div>
+        <div class="bloque">
+            <h3>Informática y Tecnología</h3>
+            <p>Provisión de ordenadores, monitores, servidores, componentes de red y periféricos, trabajando con las principales marcas del mercado tecnológico.</p>
+        </div>
+        <div class="bloque">
+            <h3>Equipamiento Audiovisual</h3>
+            <p>Diseño e instalación de salas de reuniones, proyectores interactivos, pizarras digitales, sistemas de sonido y videoconferencia para entornos híbridos.</p>
+        </div>
+        <div class="bloque">
+            <h3>Mobiliario Corporativo</h3>
+            <p>Sillas ergonómicas, mesas de dirección y operativas, armarios metálicos, taquillas y diseño de espacios de trabajo adaptados a normativa vigente.</p>
+        </div>
+        <div class="bloque">
+            <h3>Imprenta y Artes Gráficas</h3>
+            <p>Servicios de impresión corporativa, etiquetado personalizado, sellos de caucho, rotulación y regalo promocional de empresa.</p>
+        </div>
+        <div class="bloque">
+            <h3>Maquinaria y Embalaje</h3>
+            <p>Destructoras de papel, plastificadoras, encuadernadoras, así como material de protección, cajas y cintas para sus envíos logísticos.</p>
+        </div>
+    </section>
+
+    <hr class="separador">
+    <h2 class="titulo">NUESTRAS SOLUCIONES DE<span> PACKAGING</span></h1>
+<div class="cat2">
+    <div class="productos">
+        <h2>Material de Embalaje</h2>
+        <p>Distribuimos todo tipo de material de embalaje como:</p>
+            <ul>
+                <li>Precinto Personalizado</li>
+                <li>Especiales para el contacto con alimentos</li>
+                <li>Film paletizador</li>
+                <li>Cajas de Cartón</li>
+                <li>Sobre acolchados</li>
+            </ul>
+    </div>
+    <div class="productos">
+        <h2>Etiquetado</h2>
+        <p>Producimos etiquetas a medida para que cubran sus necesidades:</p>
+            <ul>
+                <li>Autoadhesivas en bobinas </li>
+                <li>Especiales para el contacto con alimentos</li>
+                <li>Etiquetas de radiofrecuencia con sistemas antihurto</li>
+                <li>Máquinas dispensadoras y aplicadoras</li>
+            </ul>
+
+    </div>
+    <div class="productos">
+        <h2>Sellos y Accesorios</h2>
+        <p>Fabricamos todo tipo de sellos de caucho(Manuales y Automáticos):</p>
+            <ul>
+                <li>Sellos de identidad corporativa</li>
+                <li>Fechadores</li>
+                <li>Tintas</li>
+                <li>Sellos para regalar</li>
+                <li>Numeradores e Imprentillas</li>
+            </ul>
+    </div>
+
+</div>
+
+    <div class="carrusel-patrocinadores">
+        <div class="patrocinadores-track">
+            <img src="imagenes/patrocinador1.png" class="patrocinador-logo" alt="Marca colaboradora" />
+            <img src="imagenes/patrocinador2.png" class="patrocinador-logo" alt="Marca colaboradora" />
+            <img src="imagenes/patrocinador4.png" class="patrocinador-logo" alt="Marca colaboradora" />
+            <img src="imagenes/patrocinador5.png" class="patrocinador-logo" alt="Marca colaboradora" />
+            <img src="imagenes/patrocinador6.png" class="patrocinador-logo" alt="Marca colaboradora" />
+            <img src="imagenes/patrocinador7.png" class="patrocinador-logo" alt="Marca colaboradora" />
+            <img src="imagenes/patrocinador9.png" class="patrocinador-logo" alt="Marca colaboradora" />
+            <img src="imagenes/patrocinador1.png" class="patrocinador-logo" alt="Marca colaboradora" />
+            <img src="imagenes/patrocinador2.png" class="patrocinador-logo" alt="Marca colaboradora" />
+            <img src="imagenes/patrocinador4.png" class="patrocinador-logo" alt="Marca colaboradora" />
+            <img src="imagenes/patrocinador5.png" class="patrocinador-logo" alt="Marca colaboradora" />
+            <img src="imagenes/patrocinador6.png" class="patrocinador-logo" alt="Marca colaboradora" />
+            <img src="imagenes/patrocinador7.png" class="patrocinador-logo" alt="Marca colaboradora" />
+            <img src="imagenes/patrocinador9.png" class="patrocinador-logo" alt="Marca colaboradora" />
+        </div>
+    </div>
+
+    <footer class="pie-pagina">
+        <div class="footer-col izq">
+            <p>📍 Av. de Europa, 21 — 14550 Montilla, Córdoba</p>
+            <p>📍 Calle Valenzuela, 21 — 14540 La Rambla, Córdoba</p>
+        </div>
+        <div class="footer-col centro">
+            <a href="https://www.facebook.com/LucasRojasES" class="social-link" target="_blank"><img src="imagenes/facebook.png" alt="Facebook" class="logoSocial" /></a>
+            <a href="https://www.instagram.com/lucasrojas_es" class="social-link" target="_blank"><img src="imagenes/IG.png" alt="Instagram" class="logoSocial" /></a>
+            <a href="https://www.tiktok.com/@lucasrojas_es" class="social-link" target="_blank"><img src="imagenes/tiktok.jpg" alt="TikTok" class="logoSocial"></a>
+            <a href="https://x.com/LucasRojasES" class="social-link" target="_blank"><img src="imagenes/tw.png" alt="Twitter/X" class="logoSocial" /></a>
+        </div>
+        <div class="footer-col der">
+            <p>📞 +34 957 684 337</p>
+            <p>📞 +34 692 878 070</p>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelectorAll('.bloque').forEach(el => {
+            el.addEventListener('mousemove', e => {
+                const r = el.getBoundingClientRect();
+                el.style.setProperty('--mx', ((e.clientX - r.left) / r.width * 100) + '%');
+                el.style.setProperty('--my', ((e.clientY - r.top) / r.height * 100) + '%');
+            });
+        });
+    </script>
+<script src="tema.js"></script>
+<script src="https://unpkg.com/lenis@1.3.4/dist/lenis.min.js"></script>
+<script src="animaciones.js"></script>
+</body>
+</html>

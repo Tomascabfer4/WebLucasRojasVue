@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contacto | Lucas Rojas</title>
+    <link rel="stylesheet" href="estilos.css" />
+    <link rel="stylesheet" href="animaciones.css" />
+    <link rel="icon" href="imagenes/logo.png" type="image/png" />
+<script>!function(){var g=localStorage.getItem("lr-tema");var esClaro=g==="light"?true:g==="dark"?false:(window.matchMedia&&window.matchMedia("(prefers-color-scheme: light)").matches);if(esClaro)document.documentElement.setAttribute("data-theme","light");}();</script>
+</head>
+<body>
+    <!-- LOADER INICIAL -->
+    <div id="page-loader">
+        <img src="imagenes/logo.png" alt="Lucas Rojas" class="loader-logo" />
+        <div class="loader-bar-track"><div class="loader-bar-fill"></div></div>
+    </div>
+    <script>if(sessionStorage.getItem('internal_nav')==='true')document.getElementById('page-loader').style.display='none';</script>
+    <!-- OVERLAY TRANSICIÓN DE PÁGINA (SVG Morphing Waves) -->
+    <div id="page-transition">
+        <svg class="pt-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <defs>
+                <linearGradient id="ptGrad1" x1="0%" y1="0%" x2="0%" y2="100%">
+                    <stop offset="0%"   stop-color="var(--pt-color-1, #06090d)" />
+                    <stop offset="20%"  stop-color="var(--pt-color-2, #06090d)" />
+                    <stop offset="45%"  stop-color="var(--pt-color-3, #003d44)" />
+                    <stop offset="70%"  stop-color="var(--pt-color-4, #008fa0)" />
+                    <stop offset="100%" stop-color="var(--pt-color-5, #00c8d7)" />
+                </linearGradient>
+            </defs>
+            <path id="pt-path-1" fill="url(#ptGrad1)" d="M 0 0 V 100 H 100 V 0 H 0" />
+        </svg>
+    </div>
+    <!-- CURSOR PERSONALIZADO -->
+    <div id="cursor-dot"></div>
+    <div id="cursor-ring"></div>
+    <!-- BARRA DE PROGRESO SCROLL -->
+    <div id="scroll-progress"></div>
+    <!-- CANVAS PARTÍCULAS -->
+    <canvas id="particles-canvas"></canvas>
+    <!-- AURORA BACKGROUND -->
+    <div class="aurora-bg">
+        <div class="aurora-blob"></div>
+        <div class="aurora-blob"></div>
+        <div class="aurora-blob"></div>
+    </div>
+    <!-- GRID DE FONDO -->
+    <div class="bg-grid"></div>
+    <header>
+        <ul class="navegacion">
+            <li><a href="index.html" class="logo-link"><img src="imagenes/logo.png" alt="Lucas Rojas" class="logo" /></a></li>
+            <div class="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="soluciones.html">Soluciones</a></li>
+                <li><a href="sectores.html">Sectores</a></li>
+                <li><a href="proyectos.html">Proyectos</a></li>
+                <li><a href="nosotros.html">Nosotros</a></li>
+                <li><a href="contacto.html" class="activa">Contacto</a></li>
+                <li><a href="https://tienda.lucasrojas.com/" target="_blank">Tienda</a></li>
+            </div>
+            <li><button id="btn-tema" class="btn-tema" aria-label="Cambiar tema"><svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg></button></li>
+            <li><a href="https://tienda.lucasrojas.com/" class="btn-cliente" target="_blank">Área de Cliente</a></li>
+        </ul>
+    </header>
+
+    <h1 class="titulo">CONTACTO Y <span>ATENCIÓN AL CLIENTE</span></h1>
+    
+    <div class="contenedor-texto">
+        <p style="text-align: center; color: var(--text-2); font-size: 1.05rem; margin-bottom: 0;">
+            Con el firme compromiso de brindarle una atención a la medida de sus necesidades, ponemos a su entera disposición diversos canales. Estaremos encantados de atender sus consultas o gestionar sus peticiones.
+        </p>
+    </div>
+
+    <div class="servicios" style="margin-top: 20px;">
+        <div class="servicio">
+            <img src="imagenes/atencion.png" alt="Atención telefónica" class="logoTransporte" />
+            <h2>Teléfonos</h2>
+            <p>Centralita: <strong style="color:var(--text)"> <br>☎️ +34 957 684 337</strong><br>Teléfono Alternativo: 
+                <strong style="color:var(--text)"> <br>📞 +34 692 878 070</strong></p>
+        </div>
+        <div class="servicio" style="width: 380px;">
+            <h2>Envíanos un mensaje</h2>
+            <!--Cambiar email cuando se tenga que entregar.-->
+            <form action="https://formsubmit.co/marcoslucenaperez@gmail.com" method="POST" class="formulario-contacto" enctype="multipart/form-data">
+                <input type="text" name="nombre" placeholder="Nombre o Empresa" required>
+                <input type="email" name="correo" placeholder="Correo Electrónico" required>
+                <input type="tel" name="telefono" placeholder="Teléfono (Opcional)">
+                <textarea name="mensaje" placeholder="¿En qué podemos ayudarle?" required></textarea>
+                <button type="submit" class="btn-submit">ENVIAR MENSAJE</button>
+            </form>
+        </div>
+        <div class="servicio">
+            <img src="imagenes/correo.png" alt="Correo electrónico" class="logoTransporte" />
+            <h2>Emails</h2>
+            <p><strong style="color:var(--text)">📧 tienda@lucasrojas.com</strong><br><strong style="color:var(--text)">📧 web@lucasrojas.com</strong></p>
+        </div>
+    </div>
+
+    <h2 class="titulo" style="margin-top: 90px;">TRABAJA <span>CON NOSOTROS</span></h2>
+
+    <section class="cv-apartado">
+        <div class="cv-intro">
+            <span class="cv-kicker">Talento y nuevas incorporaciones</span>
+            <h3>Abierto el canal para recibir candidaturas y curriculums.</h3>
+            <p>
+                Si alguna persona quiere formar parte del equipo, ahora puede enviarnos su perfil directamente desde esta p&aacute;gina.
+                El formulario est&aacute; preparado para adjuntar el curriculum y remitirlo al correo que configures.
+            </p>
+            <ul class="cv-lista">
+                <li>Adjunta el curriculum en PDF, DOC o DOCX.</li>
+                <li>Incluye datos de contacto y el &aacute;rea de inter&eacute;s.</li>
+                <li>Recibir&aacute;s cada candidatura en el email que indiques en el formulario.</li>
+            </ul>
+        </div>
+
+        <div class="cv-form-card">
+            <h3>Enviar curriculum</h3>
+            <p class="cv-form-copy">
+                Complete los siguientes datos para enviar su Curriculum.
+            </p>
+            <!-- Sustituye TU_CORREO_AQUI por el correo donde quieras recibir los curriculums email sustituir-->
+            <form action="https://formsubmit.co/marcoslucenaperez@gmail.com" method="POST" enctype="multipart/form-data" class="formulario-cv">
+                <input type="hidden" name="_subject" value="Nuevo curriculum recibido desde la web" />
+                <input type="hidden" name="_template" value="table" />
+
+                <div class="form-grid">
+                    <input type="text" name="nombre" placeholder="Nombre y apellidos" required />
+                    <input type="email" name="email" placeholder="Correo electr&oacute;nico" required />
+                    <input type="tel" name="telefono" placeholder="Tel&eacute;fono" />
+                    <input type="text" name="puesto" placeholder="Puesto o &aacute;rea de inter&eacute;s" />
+                    <textarea name="mensaje" class="campo-completo" placeholder="Cu&eacute;ntanos brevemente tu experiencia o disponibilidad"></textarea>
+                </div>
+
+                <div class="cv-upload">
+                    <label for="cv-adjunto">Adjuntar curriculum</label>
+                    <input id="cv-adjunto" type="file" name="attachment" accept=".pdf,.doc,.docx" required />
+                    <p>Formatos admitidos: PDF, DOC y DOCX. Tama&ntilde;o m&aacute;ximo recomendado: 10 MB.</p>
+                </div>
+
+                <button type="submit" class="btn-submit">ENVIAR CURRICULUM</button>
+            </form>
+        </div>
+    </section>
+
+    <h2 class="titulo" style="margin-top: 90px;">NUESTRAS <span>SEDES</span></h2>
+    
+    <div class="dosMapas">
+        <div class="mapas">
+            <h3>Sede Logística — Montilla</h3>
+            <p style="color:var(--text-2); margin-top: 4px; font-size: 0.875rem;">Av. de Europa, 21 · 14550 Montilla, Córdoba</p>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2861.158852552373!2d-4.660596524659192!3d37.58607102300861!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd6d14891d9efdd9%3A0x94ffd1b4b7173b0e!2sAv.%20de%20Europa%2C%2021%2C%2014550%20Montilla%2C%20C%C3%B3rdoba%2C%20Espa%C3%B1a!5e1!3m2!1ses!2sus!4v1775636242077!5m2!1ses!2sus" width="600" height="320" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <div class="mapas">
+            <h3>Oficina Central — La Rambla</h3>
+            <p style="color:var(--text-2); margin-top: 4px; font-size: 0.875rem;">Calle Valenzuela, 21 · 14540 La Rambla, Córdoba</p>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1700.7669747083194!2d-4.739473369654311!3d37.607429301788216!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd6d3e3d5de2be41%3A0xe4c839aa6fbed259!2sC.%20Valenzuela%2C%2021%2C%2014540%20La%20Rambla%2C%20C%C3%B3rdoba%2C%20Espa%C3%B1a!5e1!3m2!1ses!2sus!4v1775636354088!5m2!1ses!2sus" width="600" height="320" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>        </div>
+    </div>
+
+        <div class="carrusel-patrocinadores">
+        <div class="patrocinadores-track">
+            <img src="imagenes/patrocinador1.png" class="patrocinador-logo" alt="Marca colaboradora" />
+            <img src="imagenes/patrocinador2.png" class="patrocinador-logo" alt="Marca colaboradora" />
+            <img src="imagenes/patrocinador4.png" class="patrocinador-logo" alt="Marca colaboradora" />
+            <img src="imagenes/patrocinador5.png" class="patrocinador-logo" alt="Marca colaboradora" />
+            <img src="imagenes/patrocinador6.png" class="patrocinador-logo" alt="Marca colaboradora" />
+            <img src="imagenes/patrocinador7.png" class="patrocinador-logo" alt="Marca colaboradora" />
+            <img src="imagenes/patrocinador9.png" class="patrocinador-logo" alt="Marca colaboradora" />
+            <img src="imagenes/patrocinador1.png" class="patrocinador-logo" alt="Marca colaboradora" />
+            <img src="imagenes/patrocinador2.png" class="patrocinador-logo" alt="Marca colaboradora" />
+            <img src="imagenes/patrocinador4.png" class="patrocinador-logo" alt="Marca colaboradora" />
+            <img src="imagenes/patrocinador5.png" class="patrocinador-logo" alt="Marca colaboradora" />
+            <img src="imagenes/patrocinador6.png" class="patrocinador-logo" alt="Marca colaboradora" />
+            <img src="imagenes/patrocinador7.png" class="patrocinador-logo" alt="Marca colaboradora" />
+            <img src="imagenes/patrocinador9.png" class="patrocinador-logo" alt="Marca colaboradora" />
+        </div>
+    </div>
+
+    <footer class="pie-pagina">
+        <div class="footer-col izq">
+            <p>📍 Av. de Europa, 21 — 14550 Montilla, Córdoba</p>
+            <p>📍 Calle Valenzuela, 21 — 14540 La Rambla, Córdoba</p>
+        </div>
+        <div class="footer-col centro">
+            <a href="https://www.facebook.com/LucasRojasES" class="social-link" target="_blank"><img src="imagenes/facebook.png" alt="Facebook" class="logoSocial" /></a>
+            <a href="https://www.instagram.com/lucasrojas_es" class="social-link" target="_blank"><img src="imagenes/IG.png" alt="Instagram" class="logoSocial" /></a>
+            <a href="https://www.tiktok.com/@lucasrojas_es" class="social-link" target="_blank"><img src="imagenes/tiktok.jpg" alt="TikTok" class="logoSocial"></a>
+            <a href="https://x.com/LucasRojasES" class="social-link" target="_blank"><img src="imagenes/tw.png" alt="Twitter/X" class="logoSocial" /></a>
+        </div>
+        <div class="footer-col der">
+            <p>📞 +34 957 684 337</p>
+            <p>📞 +34 692 878 070</p>
+        </div>
+    </footer>
+
+    <script>
+        document.querySelectorAll('.bloque').forEach(el => {
+            el.addEventListener('mousemove', e => {
+                const r = el.getBoundingClientRect();
+                el.style.setProperty('--mx', ((e.clientX - r.left) / r.width * 100) + '%');
+                el.style.setProperty('--my', ((e.clientY - r.top) / r.height * 100) + '%');
+            });
+        });
+    </script>
+<script src="tema.js"></script>
+<script src="https://unpkg.com/lenis@1.3.4/dist/lenis.min.js"></script>
+<script src="animaciones.js"></script>
+</body>
+</html>
