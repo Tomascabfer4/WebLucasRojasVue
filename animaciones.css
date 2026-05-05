@@ -656,3 +656,58 @@ body.cursor-click #cursor-ring {
     transform: scale(0);
     transition: transform 0.5s ease-in;
 }
+
+/* ─── OPTIMIZACIONES MÓVIL ─── */
+@media (max-width: 768px) {
+    /* Reducir aurora para rendimiento */
+    .aurora-blob {
+        opacity: 0.03;
+    }
+    .aurora-blob:nth-child(1) {
+        width: 300px;
+        height: 200px;
+    }
+    .aurora-blob:nth-child(2) {
+        width: 250px;
+        height: 250px;
+    }
+    .aurora-blob:nth-child(3) {
+        width: 200px;
+        height: 300px;
+    }
+
+    /* Ocultar grid de fondo en móvil */
+    .bg-grid {
+        opacity: 0.3;
+    }
+
+    /* Reducir partículas */
+    #particles-canvas {
+        opacity: 0.2;
+    }
+
+    /* Desactivar float en packaging cards */
+    .productos {
+        animation: none;
+    }
+
+    /* Scroll indicator más abajo */
+    .scroll-indicator {
+        bottom: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .aurora-blob {
+        opacity: 0.02;
+    }
+
+    .bg-grid {
+        display: none;
+    }
+
+    #particles-canvas {
+        opacity: 0.12;
+    }
+}
+

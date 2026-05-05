@@ -520,7 +520,8 @@
         window.addEventListener('resize', resize, { passive: true });
         document.addEventListener('mousemove', function (e) { mouseX = e.clientX; mouseY = e.clientY; }, { passive: true });
 
-        var count = Math.min(55, Math.floor(W / 22));
+        var maxParticles = W < 768 ? 20 : 55;
+        var count = Math.min(maxParticles, Math.floor(W / 22));
         for (var i = 0; i < count; i++) {
             particles.push(mkParticle(false));
         }
@@ -838,10 +839,122 @@
     }
 
     /* ─────────────────────────────────────────
+       19. MENÚ MÓVIL (HAMBURGUESA)
+    ───────────────────────────────────────── */
+    function initMobileMenu() {
+        var toggleBtn = document.getElementById('menu-toggle');
+        if (!toggleBtn) return;
+
+        // ── Crear overlay dinámicamente ──
+        var overlay = document.createElement('div');
+        overlay.className = 'mobile-nav-overlay';
+        overlay.id = 'mobile-nav-overlay';
+
+        // Obtener links del nav
+        var navLinks = document.querySelector('.nav-links');
+        if (!navLinks) return;
+
+        var links = navLinks.querySelectorAll('a');
+        links.forEach(function (link) {
+            var clone = document.createElement('a');
+            clone.href = link.href;
+            clone.textContent = link.textContent;
+            clone.target = link.target || '';
+            if (link.classList.contains('activa')) {
+                clone.classList.add('activa');
+            }
+            overlay.appendChild(clone);
+        });
+
+        // Divisor
+        var divider = document.createElement('div');
+        divider.className = 'mobile-nav-divider';
+        overlay.appendChild(divider);
+
+        // Sección extra (tema + área cliente)
+        var extra = document.createElement('div');
+        extra.className = 'mobile-nav-extra';
+
+        // Botón tema en overlay
+        var temaBtn = document.createElement('button');
+        temaBtn.className = 'btn-tema-mobile';
+        temaBtn.setAttribute('aria-label', 'Cambiar tema');
+        temaBtn.innerHTML = '<svg class="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><svg class="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+
+        // Enlazar con el botón de tema existente
+        temaBtn.addEventListener('click', function () {
+            var mainTema = document.getElementById('btn-tema');
+            if (mainTema) mainTema.click();
+        });
+        extra.appendChild(temaBtn);
+
+        // Enlace Área de Cliente
+        var clienteLink = document.createElement('a');
+        clienteLink.href = 'https://tienda.lucasrojas.com/';
+        clienteLink.target = '_blank';
+        clienteLink.textContent = 'Área de Cliente';
+        clienteLink.style.cssText = 'background: linear-gradient(135deg, var(--accent), #008fa0); color: var(--bg); padding: 12px 28px; border-radius: 40px; font-family: "Outfit", sans-serif; font-weight: 600; font-size: 0.9rem; text-decoration: none; letter-spacing: 0.02em;';
+        extra.appendChild(clienteLink);
+
+        overlay.appendChild(extra);
+        document.body.appendChild(overlay);
+
+        var isOpen = false;
+
+        function openMenu() {
+            isOpen = true;
+            toggleBtn.classList.add('is-active');
+            toggleBtn.setAttribute('aria-expanded', 'true');
+            overlay.classList.add('is-open');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMenu() {
+            isOpen = false;
+            toggleBtn.classList.remove('is-active');
+            toggleBtn.setAttribute('aria-expanded', 'false');
+            overlay.classList.remove('is-open');
+            document.body.style.overflow = '';
+        }
+
+        toggleBtn.addEventListener('click', function (e) {
+            e.stopPropagation();
+            if (isOpen) {
+                closeMenu();
+            } else {
+                openMenu();
+            }
+        });
+
+        // Cerrar al hacer clic en un enlace del overlay
+        overlay.querySelectorAll('a').forEach(function (link) {
+            link.addEventListener('click', function () {
+                closeMenu();
+            });
+        });
+
+        // Cerrar con Escape
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' && isOpen) {
+                closeMenu();
+            }
+        });
+
+        // Cerrar si se redimensiona por encima de 768px
+        window.addEventListener('resize', function () {
+            if (window.innerWidth > 768 && isOpen) {
+                closeMenu();
+            }
+        });
+    }
+
+    /* ─────────────────────────────────────────
        INICIALIZACIÓN
     ───────────────────────────────────────── */
     function init() {
         window.addEventListener('scroll', emitScrollSubscribers, { passive: true });
+
+        var isTouch = !window.matchMedia('(pointer: fine)').matches;
 
         initSmoothScroll();
         initPageTransitions();
@@ -852,8 +965,13 @@
         initCounters();
         initProgressBars();
         initParticles();
-        initTilt();
-        initMagneticButtons();
+
+        // Solo activar tilt y magnetic en dispositivos con ratón
+        if (!isTouch) {
+            initTilt();
+            initMagneticButtons();
+        }
+
         initRipple();
         initNavScroll();
         initParallax();
@@ -862,6 +980,7 @@
         initStatGlow();
         initLogoHover();
         initFooterSocial();
+        initMobileMenu();
     }
 
     if (document.readyState === 'loading') {
