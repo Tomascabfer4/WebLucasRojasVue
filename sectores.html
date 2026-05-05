@@ -3,16 +3,17 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="color-scheme" content="dark light" />
     <title>Sectores | Lucas Rojas</title>
     <link rel="icon" href="imagenes/logo.png" type="image/png" />
     <link rel="stylesheet" href="estilos.css" />
     <link rel="stylesheet" href="animaciones.css" />
-<script>!function(){var g=localStorage.getItem("lr-tema");var esClaro=g==="light"?true:g==="dark"?false:(window.matchMedia&&window.matchMedia("(prefers-color-scheme: light)").matches);if(esClaro)document.documentElement.setAttribute("data-theme","light");}();</script>
+<script>!function(){var g=null;try{g=localStorage.getItem("lr-tema")}catch(e){}var esClaro=g==="light"?true:g==="dark"?false:!!(window.matchMedia&&window.matchMedia("(prefers-color-scheme: light)").matches);if(esClaro)document.documentElement.setAttribute("data-theme","light");document.documentElement.style.colorScheme=esClaro?"light":"dark";var meta=document.querySelector('meta[name="theme-color"]');if(!meta){meta=document.createElement("meta");meta.name="theme-color";document.head.appendChild(meta)}meta.setAttribute("content",esClaro?"#f0f4f8":"#06090d")}();</script>
 </head>
 <body>
     <!-- LOADER INICIAL -->
     <div id="page-loader">
-        <img src="imagenes/logo.png" alt="Lucas Rojas" class="loader-logo" />
+        <img src="imagenes/logo.png" alt="Lucas Rojas" class="loader-logo" data-logo-light="imagenes/logo.png" data-logo-dark="imagenes/logoOscuro.png" />
         <div class="loader-bar-track"><div class="loader-bar-fill"></div></div>
     </div>
     <script>if(sessionStorage.getItem('internal_nav')==='true')document.getElementById('page-loader').style.display='none';</script>
@@ -48,7 +49,7 @@
     <div class="bg-grid"></div>
     <header>
         <ul class="navegacion">
-            <li><a href="index.html" class="logo-link"><img src="imagenes/logo.png" alt="Lucas Rojas" class="logo" /></a></li>
+            <li><a href="index.html" class="logo-link"><img src="imagenes/logo.png" alt="Lucas Rojas" class="logo" data-logo-light="imagenes/logo.png" data-logo-dark="imagenes/logoOscuro.png" /></a></li>
             <button id="menu-toggle" class="menu-toggle" aria-label="Menú" aria-expanded="false">
                 <span></span><span></span><span></span>
             </button>
