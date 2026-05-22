@@ -17,7 +17,7 @@ const links = [
     <ul class="navegacion">
       <li>
         <RouterLink to="/" class="logo-link">
-          <img src="/imagenes/logo.png" alt="Lucas Rojas" class="logo" data-logo-light="/imagenes/logo.png" data-logo-dark="/imagenes/logoOscuro.png" />
+          <img src="/imagenes/logoOscuroConFrase.png" alt="Lucas Rojas" class="logo" data-logo-light="/imagenes/logoConFrase.png" data-logo-dark="/imagenes/logoOscuroConFrase.png" />
         </RouterLink>
       </li>
       <button id="menu-toggle" class="menu-toggle" aria-label="Menú" aria-expanded="false">

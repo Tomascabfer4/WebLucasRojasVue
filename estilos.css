@@ -255,22 +255,22 @@ header {
 }
 
 .slide:nth-child(1) {
-    background-image: linear-gradient(170deg, rgba(6, 9, 13, 0.88) 0%, rgba(6, 9, 13, 0.5) 100%), url('imagenes/fondo1.jpg');
+    background-image: linear-gradient(170deg, rgba(6, 9, 13, 0.88) 0%, rgba(6, 9, 13, 0.5) 100%), url('/imagenes/fondo1.jpg');
     animation-delay: 0s;
 }
 
 .slide:nth-child(2) {
-    background-image: linear-gradient(170deg, rgba(6, 9, 13, 0.88) 0%, rgba(6, 9, 13, 0.5) 100%), url('imagenes/fondo2.jpg');
+    background-image: linear-gradient(170deg, rgba(6, 9, 13, 0.88) 0%, rgba(6, 9, 13, 0.5) 100%), url('/imagenes/fondo2.jpg');
     animation-delay: 6s;
 }
 
 .slide:nth-child(3) {
-    background-image: linear-gradient(170deg, rgba(6, 9, 13, 0.88) 0%, rgba(6, 9, 13, 0.5) 100%), url('imagenes/fondo3.jpg');
+    background-image: linear-gradient(170deg, rgba(6, 9, 13, 0.88) 0%, rgba(6, 9, 13, 0.5) 100%), url('/imagenes/fondo3.jpg');
     animation-delay: 12s;
 }
 
 .slide:nth-child(4) {
-    background-image: linear-gradient(170deg, rgba(6, 9, 13, 0.88) 0%, rgba(6, 9, 13, 0.5) 100%), url('imagenes/fondo4.jpg');
+    background-image: linear-gradient(170deg, rgba(6, 9, 13, 0.88) 0%, rgba(6, 9, 13, 0.5) 100%), url('/imagenes/fondo4.jpg');
     animation-delay: 18s;
 }
 
@@ -3104,19 +3104,19 @@ img.logoTransporte {
 
 /* Hero en modo claro */
 [data-theme="light"] .slide:nth-child(1) {
-    background-image: linear-gradient(170deg, rgba(240, 244, 248, 0.88) 0%, rgba(240, 244, 248, 0.55) 100%), url('imagenes/fondo1.jpg');
+    background-image: linear-gradient(170deg, rgba(240, 244, 248, 0.88) 0%, rgba(240, 244, 248, 0.55) 100%), url('/imagenes/fondo1.jpg');
 }
 
 [data-theme="light"] .slide:nth-child(2) {
-    background-image: linear-gradient(170deg, rgba(240, 244, 248, 0.88) 0%, rgba(240, 244, 248, 0.55) 100%), url('imagenes/fondo2.jpg');
+    background-image: linear-gradient(170deg, rgba(240, 244, 248, 0.88) 0%, rgba(240, 244, 248, 0.55) 100%), url('/imagenes/fondo2.jpg');
 }
 
 [data-theme="light"] .slide:nth-child(3) {
-    background-image: linear-gradient(170deg, rgba(240, 244, 248, 0.88) 0%, rgba(240, 244, 248, 0.55) 100%), url('imagenes/fondo3.jpg');
+    background-image: linear-gradient(170deg, rgba(240, 244, 248, 0.88) 0%, rgba(240, 244, 248, 0.55) 100%), url('/imagenes/fondo3.jpg');
 }
 
 [data-theme="light"] .slide:nth-child(4) {
-    background-image: linear-gradient(170deg, rgba(240, 244, 248, 0.88) 0%, rgba(240, 244, 248, 0.55) 100%), url('imagenes/fondo4.jpg');
+    background-image: linear-gradient(170deg, rgba(240, 244, 248, 0.88) 0%, rgba(240, 244, 248, 0.55) 100%), url('/imagenes/fondo4.jpg');
 }
 
 [data-theme="light"] .carrusel-fondo::after {
@@ -3564,7 +3564,7 @@ html:not([data-theme="light"]) .slide:nth-child(1) {
         linear-gradient(180deg, rgba(3, 8, 13, 0.34) 0%, rgba(3, 8, 13, 0.58) 100%),
         radial-gradient(circle at 18% 18%, rgba(76, 118, 128, 0.1), transparent 30%),
         linear-gradient(135deg, rgba(4, 8, 13, 0.54), rgba(8, 14, 20, 0.34) 55%, rgba(11, 20, 28, 0.48) 100%),
-        url('imagenes/fondo1.jpg');
+        url('/imagenes/fondo1.jpg');
 }
 
 html:not([data-theme="light"]) .slide:nth-child(2) {
@@ -3572,7 +3572,7 @@ html:not([data-theme="light"]) .slide:nth-child(2) {
         linear-gradient(180deg, rgba(3, 8, 13, 0.34) 0%, rgba(3, 8, 13, 0.58) 100%),
         radial-gradient(circle at 82% 18%, rgba(58, 86, 116, 0.08), transparent 28%),
         linear-gradient(135deg, rgba(4, 8, 13, 0.54), rgba(8, 14, 20, 0.34) 55%, rgba(11, 20, 28, 0.48) 100%),
-        url('imagenes/fondo2.jpg');
+        url('/imagenes/fondo2.jpg');
 }
 
 html:not([data-theme="light"]) .slide:nth-child(3) {
@@ -3580,7 +3580,7 @@ html:not([data-theme="light"]) .slide:nth-child(3) {
         linear-gradient(180deg, rgba(3, 8, 13, 0.34) 0%, rgba(3, 8, 13, 0.58) 100%),
         radial-gradient(circle at 24% 78%, rgba(89, 128, 137, 0.08), transparent 28%),
         linear-gradient(135deg, rgba(4, 8, 13, 0.54), rgba(8, 14, 20, 0.34) 55%, rgba(11, 20, 28, 0.48) 100%),
-        url('imagenes/fondo3.jpg');
+        url('/imagenes/fondo3.jpg');
 }
 
 html:not([data-theme="light"]) .slide:nth-child(4) {
@@ -3588,7 +3588,7 @@ html:not([data-theme="light"]) .slide:nth-child(4) {
         linear-gradient(180deg, rgba(3, 8, 13, 0.34) 0%, rgba(3, 8, 13, 0.58) 100%),
         radial-gradient(circle at 78% 72%, rgba(76, 118, 128, 0.08), transparent 28%),
         linear-gradient(135deg, rgba(4, 8, 13, 0.54), rgba(8, 14, 20, 0.34) 55%, rgba(11, 20, 28, 0.48) 100%),
-        url('imagenes/fondo4.jpg');
+        url('/imagenes/fondo4.jpg');
 }
 
 html:not([data-theme="light"]) .logo-link,
