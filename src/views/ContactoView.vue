@@ -1,0 +1,100 @@
+<template>
+  <div>
+    <h1 class="titulo">CONTACTO Y <span>ATENCIÓN AL CLIENTE</span></h1>
+    
+    <div class="contenedor-texto">
+        <p style="text-align: center; color: var(--text-2); font-size: 1.05rem; margin-bottom: 0;">
+            Con el firme compromiso de brindarle una atención a la medida de sus necesidades, ponemos a su entera disposición diversos canales. Estaremos encantados de atender sus consultas o gestionar sus peticiones.
+        </p>
+    </div>
+
+    <div class="servicios" style="margin-top: 20px;">
+        <div class="servicio">
+            <img src="/imagenes/atencion.png" alt="Atención telefónica" class="logoTransporte" loading="lazy" />
+            <h2>Teléfonos</h2>
+            <p>Centralita: <strong style="color:var(--text)"> <br>☎️ +34 957 684 337</strong><br>Teléfono Alternativo: 
+                <strong style="color:var(--text)"> <br>📞 +34 692 878 070</strong></p>
+        </div>
+        <div class="servicio servicio-form">
+            <h2>Envíanos un mensaje</h2>
+            <form action="https://formsubmit.co/ventas@lucasrojas.com" method="POST" class="formulario-contacto" enctype="multipart/form-data">
+                <input type="text" name="nombre" placeholder="Nombre o Empresa" required>
+                <input type="email" name="correo" placeholder="Correo Electrónico" required>
+                <input type="tel" name="telefono" placeholder="Teléfono (Opcional)">
+                <textarea name="mensaje" placeholder="¿En qué podemos ayudarle?" required></textarea>
+                <button type="submit" class="btn-submit">ENVIAR MENSAJE</button>
+            </form>
+        </div>
+        <div class="servicio">
+            <img src="/imagenes/correo.png" alt="Correo electrónico" class="logoTransporte" loading="lazy" />
+            <h2>Emails</h2>
+            <p><strong style="color:var(--text)">📧 tienda@lucasrojas.com</strong><br><strong style="color:var(--text)">📧 web@lucasrojas.com</strong></p>
+        </div>
+    </div>
+
+    <h2 class="titulo" style="margin-top: 90px;">TRABAJA <span>CON NOSOTROS</span></h2>
+
+    <section class="cv-apartado">
+        <div class="cv-intro">
+            <span class="cv-kicker">Talento y nuevas incorporaciones</span>
+            <h3>Abierto el canal para recibir candidaturas y curriculums.</h3>
+            <p>
+                Si alguna persona quiere formar parte del equipo, ahora puede enviarnos su perfil directamente desde esta página.
+                El formulario está preparado para adjuntar el curriculum y remitirlo al correo que configures.
+            </p>
+            <ul class="cv-lista">
+                <li>Adjunta el curriculum en PDF, DOC o DOCX.</li>
+                <li>Incluye datos de contacto y el área de interés.</li>
+                <li>Recibirás nuestra respuesta en el email o teléfono que indiques en este formulario.</li>
+            </ul>
+        </div>
+
+        <div class="cv-form-card">
+            <h3>Enviar curriculum</h3>
+            <p class="cv-form-copy">
+                Complete los siguientes datos para enviar su Curriculum.
+            </p>
+            <form action="https://formsubmit.co/ventas@lucasrojas.com" method="POST" enctype="multipart/form-data" class="formulario-cv">
+                <input type="hidden" name="_subject" value="Nuevo curriculum recibido desde la web" />
+                <input type="hidden" name="_template" value="table" />
+
+                <div class="form-grid">
+                    <input type="text" name="nombre" placeholder="Nombre y apellidos" required />
+                    <input type="email" name="email" placeholder="Correo electrónico" required />
+                    <input type="tel" name="telefono" placeholder="Teléfono" />
+                    <input type="text" name="puesto" placeholder="Puesto o área de interés" />
+                    <textarea name="mensaje" class="campo-completo" placeholder="Cuéntanos brevemente tu experiencia o disponibilidad"></textarea>
+                </div>
+
+                <div class="cv-upload">
+                    <label for="cv-adjunto">Adjuntar curriculum</label>
+                    <input id="cv-adjunto" type="file" name="attachment" accept=".pdf,.doc,.docx" required />
+                    <p>Formatos admitidos: PDF, DOC y DOCX. Tamaño máximo recomendado: 10 MB.</p>
+                </div>
+
+                <button type="submit" class="btn-submit">ENVIAR CURRICULUM</button>
+            </form>
+        </div>
+    </section>
+
+    <h2 class="titulo" style="margin-top: 90px;">NUESTRAS <span>SEDES</span></h2>
+    
+    <div class="dosMapas">
+        <div class="mapas">
+            <h3>Sede Logística — Montilla</h3>
+            <p style="color:var(--text-2); margin-top: 4px; font-size: 0.875rem;">Av. de Europa, 21 · 14550 Montilla, Córdoba</p>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2861.158852552373!2d-4.660596524659192!3d37.58607102300861!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd6d14891d9efdd9%3A0x94ffd1b4b7173b0e!2sAv.%20de%20Europa%2C%2021%2C%2014550%20Montilla%2C%20C%C3%B3rdoba%2C%20Espa%C3%B1a!5e1!3m2!1ses!2sus!4v1775636242077!5m2!1ses!2sus" height="320" style="border:0; width:100%;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+        <div class="mapas">
+            <h3>Oficina Central — La Rambla</h3>
+            <p style="color:var(--text-2); margin-top: 4px; font-size: 0.875rem;">Calle Valenzuela, 21 · 14540 La Rambla, Córdoba</p>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1700.7669747083194!2d-4.739473369654311!3d37.607429301788216!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd6d3e3d5de2be41%3A0xe4c839aa6fbed259!2sC.%20Valenzuela%2C%2021%2C%2014540%20La%20Rambla%2C%20C%C3%B3rdoba%2C%20Espa%C3%B1a!5e1!3m2!1ses!2sus!4v1775636354088!5m2!1ses!2sus" height="320" style="border:0; width:100%;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>        </div>
+    </div>
+
+    <CarruselPatrocinadores />
+  </div>
+</template>
+
+<script setup>
+import CarruselPatrocinadores from '../components/CarruselPatrocinadores.vue';
+</script>

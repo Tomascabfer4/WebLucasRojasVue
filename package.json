@@ -1,0 +1,38 @@
+{
+  "name": "weblucasrojasvue",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tomascabfer4/WebLucasRojasVue.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/Tomascabfer4/WebLucasRojasVue/issues"
+  },
+  "homepage": "https://github.com/Tomascabfer4/WebLucasRojasVue#readme",
+  "dependencies": {
+    "puppeteer": "^25.0.4",
+    "vue": "^3.5.34",
+    "vue-router": "^5.0.6"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4.3.0",
+    "@vitejs/plugin-vue": "^6.0.6",
+    "autoprefixer": "^10.5.0",
+    "eslint": "^10.3.0",
+    "postcss": "^8.5.14",
+    "prettier": "^3.8.3",
+    "tailwindcss": "^4.3.0",
+    "vite": "^8.0.12"
+  }
+}
