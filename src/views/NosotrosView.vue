@@ -68,32 +68,45 @@
     <h2 class="titulo"> NUESTRA <span>MISIÓN, VISIÓN Y VALORES</span></h2>
 
     <div class="cat">
-      <details class="acordeon">
-          <summary>MISIÓN</summary>
-          <div class="contenido">
-      Satisfacer las necesidades de nuestros clientes proporcionándoles la mejor calidad en el servicio, los precios más ajustados en los más de 35.000 productos de nuestro catálogo. Dotando a nuestra empresa de un trato humano y cercano, que garantice la labor de confianza hacia los clientes.
+      <div class="acordeon" :class="{ 'is-open': accordionState.mision }">
+          <div class="summary" @click="toggleAccordion('mision')" tabindex="0" @keypress.enter="toggleAccordion('mision')">MISIÓN</div>
+          <div class="contenido-wrapper">
+            <div class="contenido-inner">
+              <div class="contenido">
+                Satisfacer las necesidades de nuestros clientes proporcionándoles la mejor calidad en el servicio, los precios más ajustados en los más de 35.000 productos de nuestro catálogo. Dotando a nuestra empresa de un trato humano y cercano, que garantice la labor de confianza hacia los clientes.
+              </div>
+            </div>
           </div>
-      </details>
+      </div>
 
-      <details class="acordeon">
-          <summary>VISIÓN</summary>
-          <div class="contenido">
-      Mantenernos como empresa referente en el suministro de material de oficina y servicios dónde la satisfacción de los clientes sea su mayor característica, conseguir la realización personal y profesional de nuestros empleados y contribuir al engrandecimiento de nuestra sociedad de manera social, económica, y medioambiental.
+      <div class="acordeon" :class="{ 'is-open': accordionState.vision }">
+          <div class="summary" @click="toggleAccordion('vision')" tabindex="0" @keypress.enter="toggleAccordion('vision')">VISIÓN</div>
+          <div class="contenido-wrapper">
+            <div class="contenido-inner">
+              <div class="contenido">
+                Mantenernos como empresa referente en el suministro de material de oficina y servicios dónde la satisfacción de los clientes sea su mayor característica, conseguir la realización personal y profesional de nuestros empleados y contribuir al engrandecimiento de nuestra sociedad de manera social, económica, y medioambiental.
+              </div>
+            </div>
           </div>
-      </details>
-      <details class="acordeon">
-          <summary>VALORES</summary>
-          <div class="contenido">
-            <ul>
-                <li>🤝Confianza </li>
-                <li>👌Calidad</li>
-                <li>💍Compromiso</li>
-                <li>📋Responsabilidad</li>
-                <li>🌱Sostenibilidad</li>
-                <li>💡Innovación</li>
-            </ul>
+      </div>
+
+      <div class="acordeon" :class="{ 'is-open': accordionState.valores }">
+          <div class="summary" @click="toggleAccordion('valores')" tabindex="0" @keypress.enter="toggleAccordion('valores')">VALORES</div>
+          <div class="contenido-wrapper">
+            <div class="contenido-inner">
+              <div class="contenido">
+                <ul>
+                    <li>🤝Confianza </li>
+                    <li>👌Calidad</li>
+                    <li>💍Compromiso</li>
+                    <li>📋Responsabilidad</li>
+                    <li>🌱Sostenibilidad</li>
+                    <li>💡Innovación</li>
+                </ul>
+              </div>
+            </div>
           </div>
-      </details>
+      </div>
     </div>
 
     <h2 class="titulo">NUESTRO <span>DOSSIER CORPORATIVO </span></h2>
@@ -180,8 +193,18 @@
 
 <script setup>
 import CarruselPatrocinadores from '../components/CarruselPatrocinadores.vue';
-import { onMounted } from 'vue';
+import { onMounted, ref } from 'vue';
 import { initDossierNotebook } from '../dossierVue.js';
+
+const accordionState = ref({
+  mision: false,
+  vision: false,
+  valores: false
+});
+
+function toggleAccordion(key) {
+  accordionState.value[key] = !accordionState.value[key];
+}
 
 onMounted(() => {
   initDossierNotebook();
@@ -193,5 +216,38 @@ onMounted(() => {
   font-size: 2rem;
   margin-bottom: 16px;
   line-height: 1;
+}
+
+/* Animaciones del Acordeón con Grid */
+.contenido-wrapper {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.acordeon.is-open .contenido-wrapper {
+  grid-template-rows: 1fr;
+}
+
+.contenido-inner {
+  overflow: hidden;
+}
+
+.contenido {
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  visibility: hidden;
+}
+
+.acordeon.is-open .contenido {
+  opacity: 1;
+  transform: translateY(0);
+  visibility: visible;
+  transition: opacity 0.4s ease 0.15s, transform 0.4s ease 0.15s, visibility 0s;
+}
+
+.acordeon.is-open .summary::after {
+  transform: rotate(180deg);
 }
 </style>

@@ -39,8 +39,7 @@
             <span class="cv-kicker">Talento y nuevas incorporaciones</span>
             <h3>Abierto el canal para recibir candidaturas y curriculums.</h3>
             <p>
-                Si alguna persona quiere formar parte del equipo, ahora puede enviarnos su perfil directamente desde esta página.
-                El formulario está preparado para adjuntar el curriculum y remitirlo al correo que configures.
+                Si deseas unirte a nuestro equipo de profesionales en Lucas Rojas, puedes enviarnos tu currículum directamente a través de esta página. Valoramos el talento y contactaremos contigo si tu perfil se ajusta a nuestras necesidades.
             </p>
             <ul class="cv-lista">
                 <li>Adjunta el curriculum en PDF, DOC o DOCX.</li>

@@ -9,8 +9,8 @@ function formatPageNumber(pageNumber) {
 }
 
 function getCanvasWidth(pageCard) {
-  const availableWidth = pageCard.clientWidth - 72;
-  return Math.max(300, Math.min(availableWidth, 640));
+  const availableWidth = pageCard.clientWidth;
+  return Math.max(600, Math.min(availableWidth * 1.5, 1200));
 }
 
 function createPageCard(pageNumber) {
@@ -115,7 +115,7 @@ export async function initDossierNotebook() {
   const loadingNode = book.querySelector(".dossier-book-loading");
 
   try {
-    const pdfjsLib = await import(`${PDFJS_BASE}/pdf.mjs`);
+    const pdfjsLib = await import(/* @vite-ignore */ `${PDFJS_BASE}/pdf.mjs`);
     pdfjsLib.GlobalWorkerOptions.workerSrc = `${PDFJS_BASE}/pdf.worker.mjs`;
 
     const loadingTask = pdfjsLib.getDocument(pdfSrc);
