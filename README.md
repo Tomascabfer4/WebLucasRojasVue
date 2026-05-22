@@ -83,6 +83,8 @@ npm run build
 ```
 
 ## 🤝 Créditos
-Primera version con HTML, CSS y Javascript puros desarrollada por Marcos Lucena Pérez.[mlucper1109](https://github.com/mlucper1109/pagina)
-Segunda version desarrollada en VUE por Tomás Cabello Fernández.[tomascabfer4](https://github.com/Tomascabfer4)
+Primera version con HTML, CSS y Javascript puros desarrollada por Marcos Lucena Pérez [mlucper1109](https://github.com/mlucper1109/pagina).
+
+Segunda version desarrollada en VUE por Tomás Cabello Fernández [tomascabfer4](https://github.com/Tomascabfer4).
+
 Desarrollado y optimizado para **Lucas Rojas**.
