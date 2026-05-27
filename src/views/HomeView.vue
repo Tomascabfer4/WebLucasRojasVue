@@ -46,24 +46,32 @@
 
     <section class="servicios">
       <div class="servicio">
-        <img loading="lazy" src="/imagenes/transporte.png" alt="Envíos gratuitos" class="logoTransporte" />
+        <div class="logo-transporte-container">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="logo-transporte-svg"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        </div>
         <h2>Envíos Gratuitos</h2>
         <p>En pedidos superiores a 50 €. Gestionamos la logística para que usted no tenga que preocuparse.</p>
       </div>
       <div class="servicio">
-        <img loading="lazy" src="/imagenes/rapidez.jpg" alt="Entregas rápidas" class="logoTransporte" />
+        <div class="logo-transporte-container">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="logo-transporte-svg"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/><path d="M16.24 7.76a6 6 0 1 0 0 8.49"/></svg>
+        </div>
         <h2>Entregas en 24/48 H</h2>
         <p>Compromiso de entrega en 24 a 48 horas para todo el catálogo disponible en nuestro almacén.</p>
       </div>
       <div class="servicio">
-        <img loading="lazy" src="/imagenes/devolucion.jpg" alt="Devoluciones fáciles" class="logoTransporte" />
+        <div class="logo-transporte-container">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="logo-transporte-svg"><path d="M3 7v6h6"/><path d="M21 17a9 9 0 0 0-9-9 9 9 0 0 0-6 2.3L3 13"/></svg>
+        </div>
         <h2>Devoluciones Fáciles</h2>
         <p>Gestión sin complicaciones. Devuelva sus productos en un plazo de 15 días naturales.</p>
       </div>
       <div class="servicio">
-          <img loading="lazy" src="/imagenes/economico.jpg" alt="Mejor precio" class="logoTransporte" />
-          <h2>Mejor Precio</h2>
-          <p>Negociamos directamente con fabricantes para ofrecerle siempre el presupuesto más competitivo.</p>
+        <div class="logo-transporte-container">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="logo-transporte-svg"><rect x="2" y="6" width="20" height="12" rx="2"/><circle cx="12" cy="12" r="2"/><path d="M6 12h.01M18 12h.01"/></svg>
+        </div>
+        <h2>Mejor Precio</h2>
+        <p>Negociamos directamente con fabricantes para ofrecerle siempre el presupuesto más competitivo.</p>
       </div>
     </section>
 
@@ -88,12 +96,12 @@
             <img loading="lazy" src="/imagenes/salaReuniones.jpg" alt="Sala de reuniones" class="salaReuniones">
         </div>
         <div class="bloque b4">
-            <div class="icono">🖥️</div>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icono-svg"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
             <h3>INFORMÁTICA</h3>
             <p>Equipos, telefonía corporativa, periféricos y accesorios de las mejores marcas.</p>
         </div>
         <div class="bloque b5">
-            <div class="icono">🛋️</div>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="icono-svg"><path d="M4 18v3M20 18v3M19 13v5H5v-5M19 9H5v4h14V9zM5 6h14a2 2 0 0 1 2 2v1H3V8a2 2 0 0 1 2-2z"/></svg>
             <h3>MOBILIARIO</h3>
             <p>Acondicionamiento de oficinas, mobiliario escolar y sillería ergonómica certificada.</p>
         </div>
@@ -109,16 +117,10 @@
 
     <div class="contenedor-texto2">
         <div class="parrafo"> 
-            <p> <strong>Nuestra experiencia es su garantía de éxito </strong> <br>
-            En Lucas Rojas, entendemos que la confianza no es algo que se pida, sino algo que se construye día a día
-            a través de resultados impecables y una trayectoria sólida. No nos limitamos a ofrecer soluciones genéricas;
-            nos involucramos como su aliado estratégico para construir relaciones duraderas basadas estrictamente en la
-            eficiencia y la seguridad operativa. Nuestra metodología de trabajo se centra en optimizar cada proceso
-            interno y externo, analizando cada detalle técnico para asegurar que su inversión no sea solo un gasto,
-            sino que se traduzca en resultados medibles, un ahorro real de costes y la tranquilidad absoluta de saber
-            que su proyecto está respaldado por los estándares más altos de fiabilidad del mercado. Con décadas de experiencia
-            en el sector, transformamos la complejidad en soluciones directas y rentables, garantizando que cada paso que damos
-            juntos refuerce la estabilidad y el crecimiento de su negocio.</p>
+            <p class="lead-paragraph"><strong>Nuestra experiencia es su garantía de éxito.</strong></p>
+            <p>En Lucas Rojas, entendemos que la confianza no se pide, se construye día a día a través de resultados impecables y una trayectoria sólida. No nos limitamos a ofrecer suministros genéricos; nos involucramos como su aliado estratégico para construir relaciones a largo plazo basadas en la eficiencia y la seguridad operativa.</p>
+            <p>Nuestra metodología de trabajo se centra en optimizar cada proceso interno, analizando cada detalle técnico para asegurar que su inversión se traduzca en resultados medibles, un ahorro real de costes y la tranquilidad absoluta de saber que su proyecto está respaldado por los estándares más altos de fiabilidad del mercado.</p>
+            <p>Con más de seis décadas de experiencia en el sector, transformamos los retos logísticos y de aprovisionamiento en soluciones directas y rentables, garantizando que cada paso que damos juntos refuerce la estabilidad y el crecimiento de su negocio.</p>
         </div>
     </div>
 

@@ -5,8 +5,11 @@ const SectoresView = () => import("../views/SectoresView.vue");
 const ProyectosView = () => import("../views/ProyectosView.vue");
 const NosotrosView = () => import("../views/NosotrosView.vue");
 const ContactoView = () => import("../views/ContactoView.vue");
+const FAQView = () => import("../views/FaqView.vue");
+const CatalogosView = () => import("../views/CatalogosView.vue");
+const LegalView = () => import("../views/LegalView.vue");
 
-import { initAnimaciones } from "../animacionesVue.js";
+import { initAnimaciones, cleanupAnimaciones } from "../animacionesVue.js";
 
 const routes = [
   { path: "/index.html", redirect: "/" },
@@ -16,6 +19,16 @@ const routes = [
   { path: "/proyectos", name: "proyectos", component: ProyectosView, meta: { title: "Proyectos | Lucas Rojas" } },
   { path: "/nosotros", name: "nosotros", component: NosotrosView, meta: { title: "Nosotros | Lucas Rojas" } },
   { path: "/contacto", name: "contacto", component: ContactoView, meta: { title: "Contacto | Lucas Rojas" } },
+  { path: "/preguntas-frecuentes", name: "faq", component: FAQView, meta: { title: "Preguntas Frecuentes | Lucas Rojas" } },
+  { path: "/catalogos", name: "catalogos", component: CatalogosView, meta: { title: "Catálogos | Lucas Rojas" } },
+  { path: "/politica-y-condiciones", name: "legal", component: LegalView, meta: { title: "Políticas y Condiciones | Lucas Rojas" } },
+  
+  // Redirecciones heredadas
+  { path: "/faq", redirect: "/preguntas-frecuentes" },
+  { path: "/aviso-legal", redirect: "/politica-y-condiciones" },
+  { path: "/politica-de-privacidad", redirect: "/politica-y-condiciones" },
+  { path: "/condiciones-de-venta", redirect: "/politica-y-condiciones" },
+  { path: "/devoluciones", redirect: "/politica-y-condiciones" },
 ];
 
 const router = createRouter({
@@ -27,12 +40,16 @@ const router = createRouter({
 });
 
 router.beforeEach(async (to, from) => {
-  if (to.path !== from.path && window.animatePageTransition) {
-    await new Promise(resolve => {
-      window.animatePageTransition('enter', () => {
-        resolve();
+  if (to.path !== from.path) {
+    cleanupAnimaciones();
+    
+    if (window.animatePageTransition) {
+      await new Promise(resolve => {
+        window.animatePageTransition('enter', () => {
+          resolve();
+        });
       });
-    });
+    }
   }
   return true;
 });

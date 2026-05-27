@@ -74,16 +74,31 @@ const handleThemeToggle = (e) => {
 
       html.style.setProperty('--theme-origin-x', origenX + 'px');
       html.style.setProperty('--theme-origin-y', origenY + 'px');
-      html.style.setProperty('--theme-reveal-radius', radioMax + 'px');
 
       const transicion = document.startViewTransition(() => {
           applyTheme(nuevoEsClaro);
       });
 
+      transicion.ready.then(() => {
+          html.animate(
+              {
+                  clipPath: [
+                      `circle(0px at ${origenX}px ${origenY}px)`,
+                      `circle(${radioMax}px at ${origenX}px ${origenY}px)`
+                  ]
+              },
+              {
+                  duration: 650,
+                  easing: 'cubic-bezier(0.22, 1, 0.36, 1)',
+                  pseudoElement: '::view-transition-new(root)',
+                  fill: 'forwards'
+              }
+          );
+      });
+
       transicion.finished.finally(() => {
           html.style.removeProperty('--theme-origin-x');
           html.style.removeProperty('--theme-origin-y');
-          html.style.removeProperty('--theme-reveal-radius');
           isTransitioning = false;
       });
       return;

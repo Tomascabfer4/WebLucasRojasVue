@@ -10,10 +10,12 @@
 
     <div class="servicios" style="margin-top: 20px;">
         <div class="servicio">
-            <img src="/imagenes/atencion.png" alt="Atención telefónica" class="logoTransporte" loading="lazy" />
+            <div class="logo-transporte-container">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="logo-transporte-svg"><path d="M3 18v-6a9 9 0 0 1 18 0v6"/><path d="M21 19a2 2 0 0 1-2 2h-1a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2h3zM3 19a2 2 0 0 0 2 2h1a2 2 0 0 0 2-2v-3a2 2 0 0 0-2-2H3z"/><path d="M20 17a3 3 0 0 0-3 3h-3"/></svg>
+            </div>
             <h2>Teléfonos</h2>
-            <p>Centralita: <strong style="color:var(--text)"> <br>☎️ +34 957 684 337</strong><br>Teléfono Alternativo: 
-                <strong style="color:var(--text)"> <br>📞 +34 692 878 070</strong></p>
+            <p>Centralita: <strong style="color:var(--text)"> <br><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="contacto-inline-icon"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg> +34 957 684 337</strong><br>Teléfono Alternativo: 
+                <strong style="color:var(--text)"> <br><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="contacto-inline-icon"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg> +34 692 878 070</strong></p>
         </div>
         <div class="servicio servicio-form">
             <h2>Envíanos un mensaje</h2>
@@ -26,9 +28,11 @@
             </form>
         </div>
         <div class="servicio">
-            <img src="/imagenes/correo.png" alt="Correo electrónico" class="logoTransporte" loading="lazy" />
+            <div class="logo-transporte-container">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="logo-transporte-svg"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
             <h2>Emails</h2>
-            <p><strong style="color:var(--text)">📧 tienda@lucasrojas.com</strong><br><strong style="color:var(--text)">📧 web@lucasrojas.com</strong></p>
+            <p><strong style="color:var(--text)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="contacto-inline-icon"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> tienda@lucasrojas.com</strong><br><strong style="color:var(--text)"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="contacto-inline-icon"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg> web@lucasrojas.com</strong></p>
         </div>
     </div>
 

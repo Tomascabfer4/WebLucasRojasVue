@@ -611,7 +611,7 @@ body>h1.titulo {
     justify-content: center;
     align-items: center;
     text-align: center;
-    transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition);
+    transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition), background var(--transition);
     position: relative;
     overflow: hidden;
 }
@@ -681,10 +681,13 @@ body>h1.titulo {
 
 .b6 {
     width: 1000px;
-    background: linear-gradient(120deg, #052830 0%, #009aaa 100%);
+    background: linear-gradient(120deg, #052830 0%, #009aaa 50%, #063e49 75%, #00b8cc 100%);
+    background-size: 200% 100%;
+    background-position: 0% 0%;
     border: 1px solid rgba(0, 200, 215, 0.15);
     position: relative;
     overflow: hidden;
+    transition: background-position var(--transition), transform var(--transition), border-color var(--transition), box-shadow var(--transition);
 }
 
 .b6::before {
@@ -1976,7 +1979,7 @@ details[open] .contenido {
     animation: float 4s ease-in-out infinite;
     border: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: 0 4px 20px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.07);
-    transition: border-color var(--transition), box-shadow var(--transition);
+    transition: transform var(--transition), border-color var(--transition), box-shadow var(--transition), background var(--transition);
     text-align: center;
 }
 
@@ -1989,8 +1992,10 @@ details[open] .contenido {
 }
 
 .productos:hover {
+    transform: translateY(-4px);
     border-color: rgba(0, 200, 215, 0.22);
     box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+    background: rgba(255, 255, 255, 0.065);
     animation-play-state: paused;
 }
 
@@ -3172,13 +3177,15 @@ img.logoTransporte {
 }
 
 [data-theme="light"] .b6 {
-    background: linear-gradient(120deg, #005f6b 0%, #00a8bb 100%);
+    background: linear-gradient(120deg, #005f6b 0%, #00a8bb 50%, #063e49 75%, #00b8cc 100%);
+    background-size: 200% 100%;
+    background-position: 0% 0%;
 }
 
 /* Evitar que el hover genérico del bloque sobreescriba el gradiente de b6 */
 .b6:hover,
 [data-theme="light"] .b6:hover {
-    background: linear-gradient(120deg, #063e49 0%, #00b8cc 100%) !important;
+    background-position: 100% 0% !important;
     border-color: rgba(0, 200, 215, 0.35) !important;
 }
 
@@ -3644,6 +3651,7 @@ html:not([data-theme="light"]) .acordeon:hover,
 html:not([data-theme="light"]) .dossier-nav:hover:not(:disabled) {
     border-color: rgba(177, 198, 206, 0.2) !important;
     box-shadow: 0 28px 75px rgba(0, 9, 16, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.14), 0 0 0 1px rgba(143, 179, 189, 0.05) !important;
+    background-color: rgba(255, 255, 255, 0.02) !important;
 }
 
 html:not([data-theme="light"]) .logo-link:hover,
@@ -3672,15 +3680,15 @@ html:not([data-theme="light"]) .cv-intro {
 html:not([data-theme="light"]) .b6 {
     background:
         radial-gradient(circle at top left, rgba(118, 164, 175, 0.18), transparent 34%),
-        linear-gradient(120deg, #17323d 0%, #315866 52%, #4c7884 100%) !important;
+        linear-gradient(120deg, #17323d 0%, #315866 50%, #101c24 75%, #2c4650 100%) !important;
+    background-size: 100% 100%, 200% 100% !important;
+    background-position: 0% 0%, 0% 0% !important;
     border-color: rgba(166, 192, 200, 0.18) !important;
     box-shadow: 0 26px 74px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1) !important;
 }
 
 html:not([data-theme="light"]) .b6:hover {
-    background:
-        radial-gradient(circle at top left, rgba(78, 112, 121, 0.1), transparent 34%),
-        linear-gradient(120deg, #101c24 0%, #1d313a 52%, #2c4650 100%) !important;
+    background-position: 0% 0%, 100% 0% !important;
     border-color: rgba(141, 166, 174, 0.14) !important;
     box-shadow: 0 22px 62px rgba(0, 0, 0, 0.42), inset 0 1px 0 rgba(255, 255, 255, 0.07) !important;
 }
@@ -3768,4 +3776,128 @@ html:not([data-theme="light"]) .mobile-nav-overlay a.activa {
         border-color: var(--border-glass);
         box-shadow: var(--shadow-glass);
     }
+}
+
+/* =========================================
+   AUDITORÍA VISUAL: ICONOS SVG Y MAQUETACIÓN
+   ========================================= */
+
+.icono-svg {
+    width: 2.8rem;
+    height: 2.8rem;
+    color: var(--accent);
+    margin-bottom: 16px;
+    stroke-width: 1.5;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.nosotros-icon-svg {
+    width: 2.2rem;
+    height: 2.2rem;
+    color: var(--accent);
+    margin-bottom: 16px;
+    stroke-width: 1.5;
+    display: inline-block;
+}
+
+.sector-icon-svg {
+    width: 2.2rem;
+    height: 2.2rem;
+    color: var(--accent);
+    margin-bottom: 14px;
+    stroke-width: 1.5;
+    display: inline-block;
+}
+
+.contacto-inline-icon {
+    width: 1.1rem;
+    height: 1.1rem;
+    color: var(--accent);
+    vertical-align: middle;
+    margin-right: 8px;
+    display: inline-block;
+    stroke-width: 2;
+}
+
+/* Lista de valores tipo cuadrícula */
+.valores-lista {
+    list-style: none;
+    padding: 24px !important;
+    margin: 0 !important;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border);
+}
+
+.valores-lista li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 0.95rem;
+    color: var(--text-2);
+    padding: 0 !important;
+    border: none !important;
+    position: relative;
+}
+
+.valores-lista li::before {
+    content: none !important;
+    display: none !important;
+}
+
+.val-check {
+    width: 18px;
+    height: 18px;
+    color: var(--accent);
+    flex-shrink: 0;
+}
+
+/* Párrafo destacado / Lead Paragraph */
+.lead-paragraph {
+    font-size: 1.15rem !important;
+    line-height: 1.85 !important;
+    color: var(--text) !important;
+    margin-bottom: 24px !important;
+    font-weight: 500;
+}
+
+/* Contenedores e iconos circulares premium para servicios y transporte */
+.logo-transporte-container {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(255, 255, 255, 0.12);
+    background: rgba(255, 255, 255, 0.02);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+    color: var(--accent);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+    transition: border-color 0.3s cubic-bezier(0.22, 1, 0.36, 1), 
+                background-color 0.3s cubic-bezier(0.22, 1, 0.36, 1), 
+                transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+[data-theme="light"] .logo-transporte-container {
+    border-color: rgba(0, 0, 0, 0.08);
+    background: rgba(0, 0, 0, 0.02);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+.servicio:hover .logo-transporte-container {
+    border-color: var(--accent);
+    background: rgba(0, 200, 215, 0.06);
+    transform: scale(1.08) translateY(-2px);
+}
+
+.logo-transporte-svg {
+    width: 32px;
+    height: 32px;
+    stroke-width: 1.5;
+    color: var(--accent);
 }
