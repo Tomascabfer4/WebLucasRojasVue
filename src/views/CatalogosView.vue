@@ -54,37 +54,37 @@ const catalogs = ref([
     title: "Catálogo Oficina",
     description: "Últimas novedades y promociones de material de oficina. Edición de Abril a Julio 2026.",
     image: "/imagenes/cat_oficina_Abril_2026.jpg",
-    pdf: "/nuestros_catalogos/cat_oficina_Abril_2026.pdf"
+    pdf: "https://pub-c640248606f64ee5bde16e2f0d322b39.r2.dev/cat_oficina_Abril_2026.pdf"
   },
   {
     title: "Catálogo General 2026",
     description: "Catálogo completo de soluciones para empresas, material de oficina y consumibles.",
     image: "/imagenes/PORTADA-scaled.jpg",
-    pdf: "/nuestros_catalogos/cat_general_2026.pdf"
+    pdf: "https://pub-c640248606f64ee5bde16e2f0d322b39.r2.dev/cat_general_2026.pdf"
   },
   {
     title: "Catálogo Sillería",
     description: "Sillería ergonómica, operativa y de dirección para espacios de trabajo saludables.",
     image: "/imagenes/PORTADAA.jpg",
-    pdf: "/nuestros_catalogos/cat_silleria_2025.pdf"
+    pdf: "https://pub-c640248606f64ee5bde16e2f0d322b39.r2.dev/cat_silleria_2025.pdf"
   },
   {
     title: "Equipamiento Escolar 2025",
     description: "Mobiliario y soluciones didácticas para centros educativos, colegios y universidades.",
     image: "/imagenes/PORTADA_cat_equipamiento_escolar_2025-scaled.jpg",
-    pdf: "/nuestros_catalogos/cat_equipamiento_escolar_2025.pdf.pdf"
+    pdf: "https://pub-c640248606f64ee5bde16e2f0d322b39.r2.dev/cat_equipamiento_escolar_2025.pdf"
   },
   {
     title: "Catálogo Escolar 2024",
     description: "Material escolar, manualidades y recursos educativos para el curso académico.",
     image: "/imagenes/PORTADA-ESCOLAR-scaled.jpg",
-    pdf: "/nuestros_catalogos/cat_escolar_2024.pdf"
+    pdf: "https://pub-c640248606f64ee5bde16e2f0d322b39.r2.dev/cat_escolar_2024.pdf"
   },
   {
     title: "Mobiliario Escolar",
     description: "Mobiliario escolar homologado y adaptado a las necesidades de las aulas modernas.",
     image: "/imagenes/cat_mobiliario_Escolar-scaled-e1748852523329.jpg",
-    pdf: "/nuestros_catalogos/cat_mobiliario_escolar.pdf"
+    pdf: "https://pub-c640248606f64ee5bde16e2f0d322b39.r2.dev/cat_mobiliario_escolar.pdf"
   }
 ]);
 </script>

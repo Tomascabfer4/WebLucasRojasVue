@@ -54,7 +54,7 @@
           <li><RouterLink to="/catalogos">Catálogos</RouterLink></li>
           <li><RouterLink to="/proyectos">Proyectos Realizados</RouterLink></li>
           <li><RouterLink to="/preguntas-frecuentes">Preguntas Frecuentes</RouterLink></li>
-          <li><a href="/documentos/DossierLucasRojas.pdf" target="_blank" rel="noreferrer">Dossier de Empresa</a></li>
+          <li><a href="https://pub-c640248606f64ee5bde16e2f0d322b39.r2.dev/dossierCorporativo.pdf" target="_blank" rel="noreferrer">Dossier de Empresa</a></li>
           <li><RouterLink to="/contacto">Trabaja con nosotros</RouterLink></li>
         </ul>
         <a 

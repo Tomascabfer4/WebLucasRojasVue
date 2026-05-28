@@ -254,13 +254,13 @@
           </div>
           <div class="dossier-actions">
             <a
-              href="/dossierCorporativo.pdf"
+              href="https://pub-c640248606f64ee5bde16e2f0d322b39.r2.dev/dossierCorporativo.pdf"
               class="btn-primary"
               target="_blank"
               rel="noopener"
               >Abrir dossier</a
             >
-            <a href="/dossierCorporativo.pdf" class="dossier-link" download
+            <a href="https://pub-c640248606f64ee5bde16e2f0d322b39.r2.dev/dossierCorporativo.pdf" class="dossier-link" download
               >Descargar PDF</a
             >
           </div>
@@ -277,7 +277,7 @@
             <div
               class="dossier-book"
               id="dossier-book"
-              data-pdf-src="/dossierCorporativo.pdf"
+              data-pdf-src="https://pub-c640248606f64ee5bde16e2f0d322b39.r2.dev/dossierCorporativo.pdf"
               aria-label="Vista previa del dossier corporativo"
             >
               <div class="dossier-book-loading">
