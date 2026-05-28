@@ -91,7 +91,7 @@ const catalogs = ref([
 
 <style scoped>
 .catalogos-page {
-  padding-bottom: 60px;
+  padding-bottom: 0;
 }
 
 .catalogos-container {

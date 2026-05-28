@@ -99,7 +99,7 @@ function toggleFaq(index) {
 
 <style scoped>
 .faq-page {
-  padding-bottom: 60px;
+  padding-bottom: 0;
 }
 
 .faq-container {

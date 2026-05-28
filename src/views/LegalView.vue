@@ -81,7 +81,7 @@ const paragraphs = computed(() => {
 
 <style scoped>
 .legal-page {
-  padding-bottom: 60px;
+  padding-bottom: 0;
 }
 
 .legal-container {
