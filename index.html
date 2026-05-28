@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="es">
+<html lang="es" class="loader-active">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,6 +9,31 @@
       content="Suministro integral y soluciones profesionales para empresas, centros educativos y administración pública desde 1961."
     />
     <title>Lucas Rojas</title>
+    <!-- Inline script to load theme before rendering -->
+    <script>
+      (function() {
+        const saved = localStorage.getItem('lr-tema');
+        const prefersLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches;
+        const isLight = saved === 'light' || (saved !== 'dark' && prefersLight);
+        if (isLight) {
+          document.documentElement.setAttribute('data-theme', 'light');
+          document.documentElement.style.colorScheme = 'light';
+        } else {
+          document.documentElement.removeAttribute('data-theme');
+          document.documentElement.style.colorScheme = 'dark';
+        }
+        
+        // Update logo image sources based on theme on DOMContentLoaded
+        window.addEventListener('DOMContentLoaded', () => {
+          const esClaro = document.documentElement.getAttribute('data-theme') === 'light';
+          document.querySelectorAll('img[data-logo-light][data-logo-dark]').forEach(logo => {
+            const src = esClaro ? logo.getAttribute('data-logo-light') : logo.getAttribute('data-logo-dark');
+            if (src) logo.setAttribute('src', src);
+          });
+        });
+      })();
+    </script>
+    
     <!-- Favicon dinámico según el tema del sistema -->
     <link rel="icon" href="/imagenes/logoRecortado.png" type="image/png" />
     <link rel="icon" href="/imagenes/logoRecortadoOscuro.png" media="(prefers-color-scheme: dark)" type="image/png" />
@@ -22,33 +47,175 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     
     <style>
-      #page-loader {
-          position: fixed; inset: 0; background: #06090d; z-index: 999999;
+      /* ───── INITIAL LOADER (estilo Willem) ─────
+         Se muestra solo en la carga inicial (F5 / URL directa). */
+      #initial-loader-bg {
+          position: fixed;
+          inset: 0;
+          background: #06090d;
+          z-index: 9999990;
+      }
+      #initial-loader-bg.is-hidden { display: none; }
+      [data-theme="light"] #initial-loader-bg {
+          background: #f0f4f8;
+      }
+
+      #initial-loader {
+          position: fixed; inset: 0; background: transparent; z-index: 9999999;
           display: flex; align-items: center; justify-content: center;
-          flex-direction: column; gap: 24px; transition: opacity 0.4s ease, visibility 0.4s ease;
+          overflow: hidden; color: #f4f4f4;
+          font-family: 'Outfit', sans-serif;
+          pointer-events: none;
       }
-      #page-loader.loaded { opacity: 0; visibility: hidden; }
-      .loader-logo { width: 220px; height: auto; animation: loaderPulse 1.2s ease-in-out infinite; }
-      @keyframes loaderPulse {
-          0%, 100% { transform: scale(1); filter: drop-shadow(0 0 8px rgba(0,200,215,0.4)); }
-          50% { transform: scale(1.1); filter: drop-shadow(0 0 24px rgba(0,200,215,0.9)); }
+      #initial-loader.is-hidden { display: none; }
+      html.loader-active { overflow: hidden; }
+
+      /* Definimos variables de recorte iniciales en root */
+      :root {
+          --clip-v: 0px;
+          --clip-h: 0px;
+          --clip-r: 0px;
       }
-      .loader-bar-track { width: 180px; height: 2px; background: rgba(255,255,255,0.07); border-radius: 2px; overflow: hidden; }
-      .loader-bar-fill { height: 100%; width: 0%; background: linear-gradient(90deg, #00c8d7, #00e8f8); border-radius: 2px; animation: loaderFill 0.5s ease-out forwards; }
-      @keyframes loaderFill { 0% { width: 0%; } 60% { width: 75%; } 100% { width: 100%; } }
+
+      /* Estilos para el contenedor de la web cuando el loader está activo */
+      .loader-active #app {
+          position: fixed !important;
+          inset: 0 !important;
+          z-index: 9999995 !important;
+          overflow: hidden !important;
+          clip-path: inset(var(--clip-v) var(--clip-h) var(--clip-v) var(--clip-h) round var(--clip-r)) !important;
+          -webkit-clip-path: inset(var(--clip-v) var(--clip-h) var(--clip-v) var(--clip-h) round var(--clip-r)) !important;
+          will-change: transform, clip-path, opacity;
+          backface-visibility: hidden;
+      }
+
+      [data-theme="light"] #initial-loader {
+          color: #06090d;
+      }
+
+      .il-inner {
+          display: flex; align-items: center; justify-content: center;
+          width: 100%; height: 100%;
+      }
+      .il-h1 {
+          white-space: nowrap; display: flex;
+          justify-content: center;
+          font-size: min(9.5vw, 11.5em); font-weight: 800; line-height: 0.85;
+          letter-spacing: 0;
+      }
+      .il-h1-start { display: flex; justify-content: flex-end; align-items: flex-end; overflow: hidden; }
+      .il-h1-end   { display: flex; justify-content: flex-start; align-items: flex-end; overflow: hidden; }
+      /* Estado inicial: ocultamos por opacidad para evitar destellos (FOUC). GSAP anima opacidad y posición. */
+      .il-letter {
+          display: inline-block;
+          position: relative;
+          opacity: 0;
+          flex-shrink: 0;
+          background: linear-gradient(135deg, var(--accent, #00c8d7), #008fa0);
+          -webkit-background-clip: text;
+          background-clip: text;
+          -webkit-text-fill-color: transparent;
+      }
+      .il-box {
+          display: flex; flex-direction: column; justify-content: center;
+          align-items: center; width: 0.02em; position: relative;
+          height: 0.85em;
+          flex: 0 0 auto;
+          margin: 0 0.04em;
+          z-index: 2;
+      }
+      .il-box-inner {
+          display: flex; justify-content: center; align-items: center;
+          width: 100%; height: 100%; position: relative;
+      }
+      .il-growing-image {
+          display: flex; justify-content: center; align-items: center;
+          width: 100%; height: 100%; overflow: hidden; position: absolute;
+      }
+      .il-growing-image-wrap {
+          position: absolute;
+          width: 100vw;
+          height: 100dvh;
+          left: 50%;
+          top: 50%;
+          transform: translate(-50%, -50%);
+      }
+      .il-cover-extra {
+          position: absolute; inset: 0; width: 100%; height: 100%;
+          object-fit: cover; pointer-events: none; user-select: none;
+      }
+      .il-cover-extra.is--1 { z-index: 3; }
+      .il-cover-extra.is--2 { z-index: 2; }
+      .il-cover-extra.is--3 { z-index: 1; }
+
+      /* ───── NAV LOADER (logo) ─────
+         Aparece en paralelo a la ola SVG cuando se navega entre páginas. */
+      #nav-loader {
+          position: fixed; inset: 0; background: transparent;
+          z-index: 100000;
+          display: flex; align-items: center; justify-content: center;
+          flex-direction: column; gap: 24px;
+          opacity: 0; visibility: hidden; pointer-events: none;
+          transition: opacity 0.35s ease, visibility 0.35s ease;
+      }
+      #nav-loader.is-visible {
+          opacity: 1; visibility: visible; pointer-events: auto;
+      }
+      .nav-loader-logo {
+          width: 220px; height: auto;
+          animation: navLoaderPulse 1.2s ease-in-out infinite;
+      }
+      @keyframes navLoaderPulse {
+          0%, 100% { transform: scale(1);   filter: drop-shadow(0 0 8px rgba(0,200,215,0.4)); }
+          50%      { transform: scale(1.1); filter: drop-shadow(0 0 24px rgba(0,200,215,0.9)); }
+      }
+
+      /* ───── Page transition wave (sin cambios) ───── */
       #page-transition { position: fixed; inset: 0; z-index: 99999; pointer-events: none; display: flex; align-items: center; justify-content: center; }
       .pt-svg { position: absolute; inset: 0; width: 100%; height: 100%; will-change: contents; }
       body { background-color: #06090d; margin: 0; }
     </style>
   </head>
   <body>
-    <!-- LOADER INICIAL -->
-    <div id="page-loader">
-        <img src="/imagenes/logoOscuroConFrase.png" alt="Lucas Rojas" class="loader-logo" data-logo-light="/imagenes/logoConFrase.png" data-logo-dark="/imagenes/logoOscuroConFrase.png" />
-        <div class="loader-bar-track"><div class="loader-bar-fill"></div></div>
+    <!-- LOADER INICIAL BACKGROUND (detrás de #app) -->
+    <div id="initial-loader-bg"></div>
+
+    <!-- LOADER INICIAL (estilo Willem: LUCAS | caja con imagen | ROJAS) -->
+    <div id="initial-loader">
+        <div class="il-inner">
+            <div class="il-h1">
+                <div class="il-h1-start">
+                    <span class="il-letter">L</span>
+                    <span class="il-letter">U</span>
+                    <span class="il-letter">C</span>
+                    <span class="il-letter">A</span>
+                    <span class="il-letter">S</span>
+                </div>
+                <div class="il-box">
+                    <div class="il-box-inner">
+                        <div class="il-growing-image">
+                            <div class="il-growing-image-wrap">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="il-h1-end">
+                    <span class="il-letter">R</span>
+                    <span class="il-letter">O</span>
+                    <span class="il-letter">J</span>
+                    <span class="il-letter">A</span>
+                    <span class="il-letter">S</span>
+                </div>
+            </div>
+        </div>
     </div>
-    
-    <!-- OVERLAY TRANSICIÓN DE PÁGINA -->
+
+    <!-- LOADER DE NAVEGACIÓN (logo, en paralelo a la ola) -->
+    <div id="nav-loader">
+        <img src="/imagenes/logoOscuroConFrase.png" alt="Lucas Rojas" class="nav-loader-logo" data-logo-light="/imagenes/logoConFrase.png" data-logo-dark="/imagenes/logoOscuroConFrase.png" />
+    </div>
+
+    <!-- OVERLAY TRANSICIÓN DE PÁGINA (ola SVG) -->
     <div id="page-transition">
         <svg class="pt-svg" viewBox="0 0 100 100" preserveAspectRatio="none">
             <defs>
@@ -60,7 +227,7 @@
                     <stop offset="100%" stop-color="var(--pt-color-5, #00c8d7)" />
                 </linearGradient>
             </defs>
-            <path id="pt-path-1" fill="url(#ptGrad1)" d="M 0 0 V 100 H 100 V 0 H 0" />
+             <path id="pt-path-1" fill="url(#ptGrad1)" d="M 0 0 V 0 H 100 V 0 H 0" />
         </svg>
     </div>
 

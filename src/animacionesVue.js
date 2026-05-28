@@ -86,34 +86,201 @@ function initSmoothScroll() {
 }
 
 /* ─────────────────────────────────────────
-   1. PAGE LOADER
+   1. INITIAL LOADER (estilo Willem)
+   Se muestra una sola vez en la carga inicial (F5 / URL directa).
 ───────────────────────────────────────── */
-function initLoader() {
-    var loader = document.getElementById('page-loader');
+function initInitialLoader() {
+    var loader = document.getElementById('initial-loader');
     if (!loader) {
-        if (triggerWaveLeave) triggerWaveLeave();
         return;
     }
 
-    var isInternalNav = sessionStorage.getItem('internal_nav') === 'true';
-    sessionStorage.removeItem('internal_nav');
+    var bg = document.getElementById('initial-loader-bg');
+    var app = document.getElementById('app');
 
-    if (isInternalNav) {
-        loader.remove();
-        if (triggerWaveLeave) {
-            setTimeout(triggerWaveLeave, 50);
+    var letters         = loader.querySelectorAll('.il-letter');
+    var box             = loader.querySelectorAll('.il-box');
+    var growingImage    = loader.querySelectorAll('.il-growing-image');
+    var headingStart    = loader.querySelectorAll('.il-h1-start');
+    var headingEnd      = loader.querySelectorAll('.il-h1-end');
+
+    if (!letters.length || !box.length || !app) {
+        loader.classList.add('is-hidden');
+        if (bg) bg.classList.add('is-hidden');
+        return;
+    }
+
+    // 0. Asegurar que html tenga la clase loader-active activa al inicio
+    document.documentElement.classList.add('loader-active');
+
+    var W = window.innerWidth;
+    var H = window.innerHeight;
+    
+    var h1El = loader.querySelector('.il-h1');
+    var computedFontSize = parseFloat(window.getComputedStyle(h1El).fontSize) || 136;
+
+    // Altura del box (coincide con height: 0.85em en CSS)
+    var boxHeightEm = 0.85;
+    
+    // Calculamos el ancho objetivo del box dinámicamente según el aspect ratio de la pantalla
+    // para que la miniatura de la web quepa exactamente al 100% de alto y ancho (efecto telón sin recortes)
+    var boxTargetWidthEm = boxHeightEm * (W / H);
+    
+    // Capping para evitar que sea exageradamente ancho en pantallas ultra-wide o estrecho en retratos
+    if (boxTargetWidthEm > 3.0) {
+        boxTargetWidthEm = 3.0;
+    } else if (boxTargetWidthEm < 0.5) {
+        boxTargetWidthEm = 0.5;
+    }
+    
+    var boxTargetWidth = boxTargetWidthEm + 'em';
+    var boxStartWidth = '0.02em';
+
+    // Medir las proporciones reales del box
+    var originalBoxWidth = box[0].style.width;
+    box[0].style.width = boxTargetWidth;
+    var boxRect = box[0].getBoundingClientRect();
+    box[0].style.width = boxStartWidth;
+    var startBoxRect = box[0].getBoundingClientRect();
+    box[0].style.width = originalBoxWidth; // Restaurar original
+
+    var wTarget = boxRect.width;
+    var hTarget = boxRect.height;
+    var wStart = startBoxRect.width;
+
+    // Fallbacks en caso de que la medición de 0 px ocurra por no estar renderizado aún
+    if (!wTarget || !hTarget || wTarget < 5 || hTarget < 5) {
+        hTarget = 0.85 * computedFontSize;
+        wTarget = boxTargetWidthEm * computedFontSize;
+        wStart = 0.02 * computedFontSize;
+    }
+
+    // Dimensiones del box abierto con margen de separación para que las letras no rocen el borde
+    var safeGutter = Math.max(16, Math.min(32, wTarget * 0.12));
+    var wTargetSafe = Math.max(0, wTarget - safeGutter);
+
+    // Dimensiones del box cerrado
+    var wStartSafe = Math.max(0, wStart - 2);
+
+    // Calculamos la escala usando Math.min para contener la web y asegurar que el navbar sea siempre visible
+    var scaleX = wTargetSafe / W;
+    var scaleY = hTarget / H;
+    var initialScale = Math.min(scaleX, scaleY);
+    if (!initialScale || isNaN(initialScale)) {
+        initialScale = 0.15;
+    }
+
+    // Altura recortada del app para encajar exactamente al alto hTarget
+    var H_clipped = hTarget / initialScale;
+    var insetV = Math.max(0, (H - H_clipped) / 2);
+
+    // Recorte horizontal objetivo (abierto)
+    var W_target_clipped = wTargetSafe / initialScale;
+    var insetH_target = Math.max(0, (W - W_target_clipped) / 2);
+
+    // Recorte horizontal cerrado (sincronizado con el ancho inicial de la caja)
+    var insetH_start = Math.max(0, (W - wStartSafe / initialScale) / 2);
+
+    var initialRadius = 0; // Sin bordes redondeados en la máscara del telón
+
+    // Inicializar variables CSS de recorte en root
+    gsap.set(document.documentElement, {
+        '--clip-v': insetV + 'px',
+        '--clip-h': insetH_start + 'px',
+        '--clip-r': '0px'
+    });
+
+    // Inicializar escala y opacidad de #app (el clip-path se gestiona por la clase CSS .loader-active)
+    gsap.set(app, {
+        transformOrigin: 'center center',
+        scale: initialScale,
+        opacity: 0
+    });
+
+    var tl = gsap.timeline({
+        defaults: { ease: 'expo.inOut' },
+        onComplete: function () {
+            loader.classList.add('is-hidden');
+            if (bg) bg.classList.add('is-hidden');
+            
+            // Remover la clase del HTML para restablecer los estilos de scroll y layout nativos de #app
+            document.documentElement.classList.remove('loader-active');
+            
+            // Limpiar las propiedades de GSAP en el app
+            gsap.set(app, {
+                clearProps: 'transformOrigin,scale,opacity'
+            });
+            // Limpiar variables de CSS
+            gsap.set(document.documentElement, {
+                clearProps: '--clip-v,--clip-h,--clip-r'
+            });
         }
-        return;
-    }
+    });
 
-    setTimeout(function () {
-        loader.classList.add('loaded');
-        setTimeout(function () {
-            loader.remove();
-            if (triggerWaveLeave) triggerWaveLeave();
-        }, 300);
-    }, 600);
+    // 1. Letras suben desde abajo y se hacen visibles.
+    tl.fromTo(letters,
+        { yPercent: 100, opacity: 0 },
+        { yPercent: 0, opacity: 1, stagger: 0.025, duration: 1.25 }
+    );
+
+    // 2. La caja crece y el app se revela como un telón limpio desde el centro.
+    tl.fromTo(box, { width: boxStartWidth }, { width: boxTargetWidth, duration: 1.2 }, '< 1.2');
+    tl.fromTo(growingImage, { width: '0%' }, { width: '100%', duration: 1.2 }, '<');
+    tl.fromTo(headingStart, { x: '0em' }, { x: '-0.1em', duration: 1.2 }, '<');
+    tl.fromTo(headingEnd,   { x: '0em' }, { x:  '0.1em', duration: 1.2 }, '<');
+    
+    // Revelar la miniatura (efecto telón) animando --clip-h
+    tl.to(document.documentElement, {
+        '--clip-h': insetH_target + 'px',
+        duration: 1.2
+    }, '<');
+    // Hacer el app visible de forma instantánea al iniciar la apertura (efecto telón literal, sin difuminado)
+    tl.set(app, { opacity: 1 }, '<');
+
+    // 3. El box crece a pantalla completa, y el app escala y remueve su máscara en sincronía
+    tl.to(growingImage, { width: '100vw', height: '100dvh', duration: 2, ease: 'power2.inOut' }, '< 1.2');
+    tl.to(box,          { width: '110vw', duration: 2, ease: 'power2.inOut' }, '<');
+    
+    tl.to(app, {
+        scale: 1,
+        duration: 2,
+        ease: 'power2.inOut'
+    }, '<');
+    tl.to(document.documentElement, {
+        '--clip-v': '0px',
+        '--clip-h': '0px',
+        '--clip-r': '0px',
+        duration: 2,
+        ease: 'power2.inOut'
+    }, '<');
+
+    // 4. Fade out final del loader (letras y fondo) para terminar la intro
+    tl.to([loader, bg], {
+        opacity: 0,
+        duration: 0.45,
+        ease: 'power2.inOut',
+        onStart: function () {
+            // Evitar que el fondo y loader bloqueen clicks durante el desvanecimiento
+            if (bg) bg.style.pointerEvents = 'none';
+            loader.style.pointerEvents = 'none';
+        }
+    }, '-=0.45');
 }
+
+/* ─────────────────────────────────────────
+   1b. NAV LOADER (logo + barra, en paralelo a la ola)
+───────────────────────────────────────── */
+function showNavLoader() {
+    var nl = document.getElementById('nav-loader');
+    if (nl) nl.classList.add('is-visible');
+}
+function hideNavLoader() {
+    var nl = document.getElementById('nav-loader');
+    if (nl) nl.classList.remove('is-visible');
+}
+// Exponemos al window para que el router pueda invocarlas.
+window.showNavLoader = showNavLoader;
+window.hideNavLoader = hideNavLoader;
 
 /* ─────────────────────────────────────────
    2. PAGE TRANSITION (GSAP Powered Waves)
@@ -222,8 +389,8 @@ function initPageTransitions() {
         transitionAnimId = requestAnimationFrame(step);
     }
 
-    var fullPts = Array(NUM_POINTS).fill(100);
-    paths[0].setAttribute('d', buildPathD(fullPts));
+    var emptyPts = Array(NUM_POINTS).fill(0);
+    paths[0].setAttribute('d', buildPathD(emptyPts));
 
     triggerWaveLeave = function() {
         animate('leave', function () {
@@ -860,7 +1027,7 @@ export function initAnimaciones() {
         initScrollProgress();
         initParticles();
         initNavScroll();
-        initLoader();
+        initInitialLoader();
         isGlobalInitialized = true;
     } else {
         // En navegaciones posteriores, reiniciamos Lenis si no existe

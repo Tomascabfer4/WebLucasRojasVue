@@ -42,7 +42,10 @@ const router = createRouter({
 router.beforeEach(async (to, from) => {
   if (to.path !== from.path) {
     cleanupAnimaciones();
-    
+
+    // Mostramos logo+barra a la vez que la ola entra (en paralelo).
+    if (window.showNavLoader) window.showNavLoader();
+
     if (window.animatePageTransition) {
       await new Promise(resolve => {
         window.animatePageTransition('enter', () => {
@@ -56,11 +59,16 @@ router.beforeEach(async (to, from) => {
 
 router.afterEach((to) => {
   document.title = to.meta?.title ?? "Lucas Rojas";
-  
+
   if (window.animatePageTransition) {
       // Small timeout to let Vue render
       setTimeout(() => window.animatePageTransition('leave'), 50);
   }
+
+  // Ocultamos el logo+barra una vez la ola comienza a retirarse.
+  setTimeout(() => {
+    if (window.hideNavLoader) window.hideNavLoader();
+  }, 350);
 
   setTimeout(() => {
     initAnimaciones();
