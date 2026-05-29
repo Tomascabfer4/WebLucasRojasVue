@@ -1,5 +1,6 @@
 <template>
   <div>
+
     <section class="carrusel-fondo">
       <div class="slide"></div>
       <div class="slide"></div>

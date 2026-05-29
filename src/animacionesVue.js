@@ -276,7 +276,17 @@ function showNavLoader() {
 }
 function hideNavLoader() {
     var nl = document.getElementById('nav-loader');
-    if (nl) nl.classList.remove('is-visible');
+    if (nl) {
+        nl.classList.remove('is-visible');
+        // Limpiamos los estilos en línea después de terminar la transición de opacidad (150ms)
+        setTimeout(function() {
+            if (nl && !nl.classList.contains('is-visible')) {
+                nl.style.clipPath = '';
+                nl.style.webkitClipPath = '';
+                nl.style.transform = '';
+            }
+        }, 150);
+    }
 }
 // Exponemos al window para que el router pueda invocarlas.
 window.showNavLoader = showNavLoader;
@@ -338,6 +348,15 @@ function initPageTransitions() {
         var fromVal  = direction === 'enter' ? 0 : 100;
         var toVal    = direction === 'enter' ? 100 : 0;
 
+        var loaderEl = document.getElementById('nav-loader');
+        if (loaderEl) {
+            var initialClip = 100 - fromVal;
+            var initialTranslate = (100 - fromVal) * -0.6;
+            loaderEl.style.clipPath = 'inset(0 0 ' + initialClip + '% 0)';
+            loaderEl.style.webkitClipPath = 'inset(0 0 ' + initialClip + '% 0)';
+            loaderEl.style.transform = 'translateY(' + initialTranslate + 'px)';
+        }
+
         var maxDelay = 0;
         for (var i = 0; i < NUM_PATHS; i++) {
             var pathDelay = DELAY_PER_PATH * i;
@@ -351,9 +370,9 @@ function initPageTransitions() {
         function step(timestamp) {
             if (!startTime) startTime = timestamp;
             var elapsed = timestamp - startTime;
+            var pts = [];
 
             for (var i = 0; i < NUM_PATHS; i++) {
-                var pts = [];
                 var pathDelay = DELAY_PER_PATH * i;
 
                 for (var j = 0; j < NUM_POINTS; j++) {
@@ -373,6 +392,20 @@ function initPageTransitions() {
                 paths[i].setAttribute('d', buildPathD(pts));
             }
 
+            // Sincronizar el contenedor de navegación (#nav-loader) con la ola
+            if (loaderEl && pts.length > 0) {
+                var sum = 0;
+                for (var k = 0; k < NUM_POINTS; k++) {
+                    sum += pts[k];
+                }
+                var avgVal = sum / NUM_POINTS;
+                var clipPercent = 100 - avgVal;
+                var translateY = (100 - avgVal) * -0.6; // Desplazamiento sutil de -60px a 0px
+                loaderEl.style.clipPath = 'inset(0 0 ' + clipPercent + '% 0)';
+                loaderEl.style.webkitClipPath = 'inset(0 0 ' + clipPercent + '% 0)';
+                loaderEl.style.transform = 'translateY(' + translateY + 'px)';
+            }
+
             if (elapsed < totalDuration) {
                 transitionAnimId = requestAnimationFrame(step);
             } else {
@@ -381,6 +414,15 @@ function initPageTransitions() {
                 for (var m = 0; m < NUM_PATHS; m++) {
                     paths[m].setAttribute('d', buildPathD(finalPts));
                 }
+
+                if (loaderEl) {
+                    var finalClip = 100 - toVal;
+                    var finalTranslate = (100 - toVal) * -0.6;
+                    loaderEl.style.clipPath = 'inset(0 0 ' + finalClip + '% 0)';
+                    loaderEl.style.webkitClipPath = 'inset(0 0 ' + finalClip + '% 0)';
+                    loaderEl.style.transform = 'translateY(' + finalTranslate + 'px)';
+                }
+
                 transitionAnimId = null;
                 if (onComplete) onComplete();
             }

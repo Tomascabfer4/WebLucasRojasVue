@@ -1,5 +1,6 @@
 <template>
   <div>
+
     <h1 class="titulo">SOBRE <span>LUCAS ROJAS</span></h1>
 
     <div class="contenedor-texto">

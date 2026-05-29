@@ -87,6 +87,13 @@
       <div class="copyright">
         &copy; {{ currentYear }} Lucas Rojas S.L. Todos los derechos reservados.
       </div>
+      <RouterLink 
+        to="/politica-y-condiciones?tab=calidad" 
+        class="bureau-veritas-badge"
+        aria-label="Certificación Bureau Veritas ISO 9001 e ISO 14001"
+      >
+        <img src="/imagenes/certificacion-bureau-veritas.png" alt="Certificación Bureau Veritas ISO 9001 e ISO 14001" />
+      </RouterLink>
       <div class="social-icons">
         <a href="https://www.facebook.com/LucasRojasES" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="social-icon-svg"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
@@ -261,6 +268,30 @@ const currentYear = computed(() => new Date().getFullYear());
   box-shadow: 0 0 10px rgba(0, 200, 215, 0.15);
 }
 
+.bureau-veritas-badge {
+  background: #ffffff;
+  padding: 5px 10px;
+  border-radius: 6px;
+  max-width: 160px;
+  opacity: 0.85;
+  transition: all 0.3s ease;
+  display: inline-block;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  flex-shrink: 0;
+}
+
+.bureau-veritas-badge:hover {
+  opacity: 1;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 200, 215, 0.25);
+}
+
+.bureau-veritas-badge img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
 /* Footer Bottom Bar */
 .footer-bottom {
   display: flex;
@@ -379,6 +410,10 @@ const currentYear = computed(() => new Date().getFullYear());
   }
   
   .hp-partner-badge {
+    align-self: center;
+  }
+
+  .bureau-veritas-badge {
     align-self: center;
   }
   
